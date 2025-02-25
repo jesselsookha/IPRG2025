@@ -1,0 +1,50 @@
+Chapter 1 
+
+Computer Systems: 
+- Hardware 
+- Software 
+-- Application Software / Apps / Software 
+-- Systems Software / Operating Systems 
+
+Programs
+- instructions written to perform a task 
+- programmers design an algorithm 
+- 3 major operations: IPO / Input (1) | Processing (3) | Output (2)
+* note the order  
+
+Programming Lanugages 
+- syntax - rules that define the structure of statements and expressions  
+- compiler - a translator that takes a coded program and converts it to a low-level lang.
+- inpterpreter - translates one statement at a time 
+- object code - produced by a compiler for the CPU to "execute"
+
+Computer memory: 
+- RAM 
+
+Programming Logic 
+** key aspects that are mentioned here will be discussed in future chapters 
+
+- variables *remember > x = a + b > now it will be something like: fltWages = intHours * fltRateOfPay
+- data types - define the type of data meant to be stored 
+- operators - symbols used to perform operations
+- control structures - logical structures (sequential, decision, & loop) 
+- functions - reusable pieces of code 
+- syntax ^ rules that define how programs must be written 
+
+
+Errors (3 types)
+- syntax - errors in the language / the (syntax) code 
+- run-time - program executes, but crashes after something occurs
+- logical - program executes, but the result is incorrect - programmer's logic is incorrect 
+
+
+
+
+
+
+
+
+
+
+
+  
