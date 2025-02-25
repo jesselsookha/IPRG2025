@@ -21,8 +21,8 @@ Below you'll find the course's content organized by chapters. Each chapter conta
 
 #### Chapter 1: Programming and Problem Solving
 
-- **1_1_1.txt** – Introduction to Pseudocode
-- **1_1_2.txt** – Basic Flowchart Symbols
+- **ch1_g2_p1.txt** – Chapter 1 - part 1 - points spoken about in class 
+- **ch1_g2_p1.txt** – Chapter 1 - part 2 - continuation of chapter notes 
 
 #### Chapter 2: Programming Basics
 
