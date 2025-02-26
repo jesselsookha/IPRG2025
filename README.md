@@ -22,7 +22,8 @@ Below you'll find the course's content organized by chapters. Each chapter conta
 #### Chapter 1: Programming and Problem Solving
 
 - **ch1_g2_p1.txt** – Chapter 1 - part 1 - points spoken about in class 
-- **ch1_g2_p1.txt** – Chapter 1 - part 2 - continuation of chapter notes 
+- **ch1_g2_p1.txt** – Chapter 1 - part 2 - continuation of chapter notes
+- **ch1_g1_p1.txt** – Chapter 1 - part 1 - chapter 1 points  
 
 #### Chapter 2: Programming Basics
 
