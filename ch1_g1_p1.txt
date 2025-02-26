@@ -1,0 +1,109 @@
+Chapter 1 
+
+Computer Systems: 
+- Hardware 
+- Software 
+-- Application Software / Apps / Software 
+-- Systems Software / Operating Systems 
+
+Programs
+- instructions written to perform a task 
+- programmers design an algorithm 
+- 3 major operations: IPO / Input (1) | Processing (3) | Output (2)
+* note the order  
+
+Programming Lanugages 
+- syntax - rules that define the structure of statements and expressions  
+- compiler - a translator that takes a coded program and converts it to a low-level lang.
+- inpterpreter - translates one statement at a time 
+- object code - produced by a compiler for the CPU to "execute"
+
+Computer memory: 
+- RAM 
+
+Programming Logic 
+** key aspects that are mentioned here will be discussed in future chapters 
+
+- variables *remember > x = a + b > now it will be something like: fltWages = intHours * fltRateOfPay
+- data types - define the type of data meant to be stored 
+- operators - symbols used to perform operations
+- control structures - logical structures (sequential, decision, & loop) 
+- functions - reusable pieces of code 
+- syntax ^ rules that define how programs must be written 
+
+
+Errors (3 types)
+- syntax - errors in the language / the (syntax) code 
+- run-time - program executes, but crashes after something occurs
+- logical - program executes, but the result is incorrect - programmer's logic is incorrect 
+
+Problem Solving 
+(6 Steps of Problem Solving) * while used for everyday types of tasks, it could be adapted to help solve computer related problems -&- in turn help develop computer programs 
+
+1. Identify the problem 
+2. Understand the problem 
+3. Identify alternative ways to solve the problem
+4. Select the best way to solve the problem from the list of alternative solutions 
+5. List the instructions that enable you to solve the problem using the selected solution 
+6. Evaluate the solution 
+
+Program Development Cycle 
+* more catered towards a computer program - but again - relate these steps to the ones we learnt above 
+
+1. Understand the problem 
+2. Plan the logic 
+3. Code the program 
+4. Use software to translate the program into machine language 
+5. Test the program 
+6. Put the program into production 
+7. Maintain the program 
+
+** Both the steps above requires that when do decide - repeat the steps to redevelop and redesign the program
+
+** 2 Types of Solutions 
+- algorithmic 
+- heuristic 
+** search for a meaning to again help you understand these terms for the 2 types of solutions produced
+
+Programming models 
+- Procedural - program divided into *functions, procedures, modules, methods - called as needed 
+- Object-oriented - program divided into classes that are instantiated to an object and the programming within is called as needed
+
+
+Pseudocode / Flowcharts 
+- algorithm - sequential list of instructions ... 
+- standards in code 
+-- Start and Stop to begin and end a program 
+-- indentation is important to view and read code 
+-- Functions / the small blocks of code will require more/different formatting 
+-- Functions / will end with a return keyword 
+-- Each statement performs one action 
+-- No punctuation us used to end statements 
+-- Numbering instructions will begin at 0. - Helps to read the coded instructions
+
+0. Start 
+1. 	input intNumber 
+2. 	intAnswer = intNumber * intNumber
+3.	output intAnswer 
+4. Stop 
+
+** Flowcharts 
+- online use Visio (from the 365 account) or draw.io 
+- also need to practice on paper 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
