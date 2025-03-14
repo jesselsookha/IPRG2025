@@ -27,8 +27,7 @@ Below you'll find the course's content organized by chapters. Each chapter conta
 
 #### Chapter 2: Programming Basics
 
-- **2_1_1.txt** – Algorithms and Basic Structures
-- **2_1_2.txt** – 
+- **ch2.txt** – Chapter 2 recap
 
 #### Chapter 3: Logic Structures
 
