@@ -1,0 +1,434 @@
+Chapter 2 Programming Basics 
+============================
+
+Variables and Constants 
+-----------------------
+
+Variables:
+- a space in memory that is assigned to hold a value and may change during the processing of a program
+
+Constants:
+- a space in memory that is assigned to hold a value. It is assigned at declaration and can never change during the processing of a program. 
+
+* in pesudocode 
+
+1. Declarations 
+	num intNum 		// a normal variable 
+	num fltVAT = 0.16 	// constant variable 
+
+2.	intNum = 5 
+3.	intNum = intNum + 5 	// a variable can be reassigned or changed
+
+4.	fltVAT = 0.15		// NOT allowed 
+
+* in javascript
+
+	var intNum1;		// normal variable
+	let intNum2;
+
+	cont fltVAT = 0.16; 	// constant variable 
+
+Named constant
+- a constant variable, which is declared and used 
+
+* in pseudocode 
+
+1. Declarations 
+	string strCOMPADDRESS = "123 This Street, Joburg" 
+
+2.	output "Company Address: " + strCOMPADDRESS 
+
+Literal constant
+- hardcoded values that are likely used in an equation 
+
+3.	fltNewPrice = fltPrice - (fltPrice * 0.5) // 0.5 is the discount percentage off
+
+- code example 
+
+0. Start 
+1. Declarations 
+	num intNumber 	// variable declared to accept input 
+	num intAnswer 	// variable that will be assigned a value 
+
+2.	input intNumber	// accepting a value from the user 
+
+	// assignment statement - assigning a value with the result of an expression
+3.	intAnswer = intNumber * 2 
+
+	// outputting the value of the variable which was determined by the equation aobve
+4.	output intAnswer 
+
+5. Stop 
+
+Data Types 
+----------
+
+When variables are declared, they need to be classified for the compiler to understand how much of space in memory needs to be reserved during the processing of a program. In this subject, the pesudocode is uses broad terms to classify that basic types that we are following during the course of our subject. 
+
+Numeric 
+- Either integer (whole numbers) or floating-point (real numbers) 
+- both positive and negative numbers are included in this range
+
+** extra information 
+** we learnt the decimal numbering system in school - 10 digits 
+** 0 1 2 3 4 5 6 7 8 9
+
+** in programming - we learn that other numbering systems are used 
+** binary - 2 digits 
+** 0 1 
+
+** hexadecimal - 16 digits 
+** 0 1 2 3 4 5 6 7 8 9 A B C D E F
+
+** 123 - remember hundred / tens / units 
+** (1 * 10 ^ 2) + (2 * 10 ^ 1) + (3 * 10 ^ 0) = 123  
+
+** in binary 1 + 1 = 10 - is actually 1 + 1 = 2 which is in decimal  
+** 2 in binary is 10 = (1 * 2^1) + (0 * 2^0)
+ 
+** knowing a little of this helps in the future to understand the limits of data types, the understanding of how character sets (UNICODE, ASCII, EBCDIC) is formed 
+** you are going to learn colour values for web development - written as a 6-digit hexdecimal number 
+** #FFFFFF = white (red 255, green 255, blue 255) - 255 is decimal value - FF is the hexadecimal value
+** #FF0000 = red 
+** #00FF00 = green 
+** #0000FF = blue 
+
+String/Character 
+- alphanumeric values (remember the ASCII chart)
+- character is a single character 
+- string is a combination of characters 
+- values are presented inside a pair of inverted commas - "string" / '3'
+
+Boolean 
+- represents a logical value or either true or false 
+
+** in JavaScript we do not need to state the data types when declaring variables because the type is inferred when it is used in programming 
+
+Declarations / Identifiers 
+--------------------------
+
+- in pseudocode we delare variables at the beginning of a program (& when we learn about modules, we will also declare them at the beginning of the module's code)
+- when you begin to learn other programming languages, we are allowed to declare variables when you require them - giving you more power over its use and the chance to better manage memory during the processing of a program 
+
+format:		[type] [identifier] 
+example:	num intNum1
+
+initializing a variable - there will come a point in time where you might decide to assign a value to a variable and you may choose to do this at declaration 
+
+* in pseudocode 
+1. Declarations 
+	num intNumberOfStudents = 0 
+
+// or you are allowed to assign the value at a later point in the program 
+
+1. Declarations 
+	num intNumberOfStudents 
+...
+...
+
+5.	intNumberOfStudents = 0
+
+- please remember that for a constant, the above is not allowed. Once again it must be assigned at declarations 
+
+	num fltPI = 3.14
+
+Naming variables 
+----------------
+
+- in class we have spoken about about the format to be followed when naming variables 
+- a prefix is used to help us understand the variable & its specific classification 
+- spelling - prefix is in small letters, first letter immediately after is a capital letter 
+- if a variable name contains multiple words, each word begins with a capital letter 
+- there are no spaces used in names of variables 
+- the underscore _ while it may be used in other examples - we are choosing not to use them here 
+
+* in pseudocode 
+1. Declarations 
+	num intCount 		// numerical - integer 
+	num fltAveragePrice 	// numerical - floating-point 
+
+	string strSurname 	// string 
+	string chrValid 	// string - character 
+
+	boolean blnVerified	// boolean 
+
+- we will use other prefixes when they become necessary to our development 
+
+* in javascript - we will follow the same rules from pseudocode 
+
+Assigning Values to Variables 
+-----------------------------
+
+- the assignment statement is understood with the words - the variable on the left is assigned the value (or result) of the expression on the right 
+
+4.	intCount = 0 
+5.	intSum = intNum1 + intNum2 
+
+- assignment statements are important for the flow of the program to either reset and/or change a value of a variable when it needs to be done 
+
+* in pseudocode (more)
+
+
+2.	intCount = 1 		// initializing a value to a variable 
+3.	intCount = intCount + 1 // assigning a new value (with an expression) to a variable 
+4.	intCount = intTotal 	// assigning the value of another variable to a variable 
+
+Input (Programming) 
+-------------------
+
+- the input statement is understood that when executed, the a value that is "entered" by the user is then inputted into the variable that is stated 
+
+2.	input intNum1 
+
+- as programmers, we understand the above statement, and know that a value is being entered and will be placed in the variable
+- within pseudocode and just general programming - providing a prompt to ask the user the for value is being courteous towards the end-user - so we add something to the above statement, a prompt
+
+2.	output "Enter a number " 
+3.	input intNum2 
+
+- the output statement is now serves as a prompt to present the user with a request. 
+
+Output (Programming)
+--------------------
+
+- as mentioned above, the output statement could be used as prompt, the presentation of a text, and for presenting a value/result back to the user. 
+
+* in pseudocode 
+
+5.	output "Checkers (Fake Store)"	// title - presentation of text 
+6.	output strShopName		// same as above - except with variable 
+
+7.	output intAnswer		// output an answer 
+8.	output "The value of the calculation is " + intAnswer2 
+
+- the above statement is using the + symbol to show you that we can concatenate (join) pieces consisting of a string with a variable 
+- we can concatenate not only for the presentation of answers but also in prompts
+
+
+* in javascript 
+
+// presenting an answer 
+console.log("The new price of the item is " + fltPrice); 
+
+// the prompt in js is different compared to pseudocode 
+let strName; 
+strName = prompt("Please enter your name");
+
+Comments in Programming 
+-----------------------
+
+- comments in code are non-executable and are presented in the following way: 
+
+- single line on its own 
+
+// this is a comment on a single line 
+
+2. 	input strName // this is a comment with a line of code 
+
+/*
+  If we need to type a small paragraph to explain maybe a block of code,
+  then writing it on multiple 
+  lines, would be a little nicer 
+  than a one line comment 
+*/
+
+Functions (Built-In)
+--------------------
+
+- within a programming language, there are built-in functions that allows us to call them when required, pass the required information and a value (the answer is returned). Also remember that a variable would be needed to accept the returned value, written as an assignment statement below, or could possibly be used as part of an equation, in an assignment statement. We do not need to know the coding within the function (though we learn about this later on). 
+
+* in pseudocode 
+
+3.	fltRandomNumber = random() // a random number between 0 and 1 is returned 
+
+- we will approach the use of these functions as and when we require them for a program. 
+- the notes provide information for functions that exist in JavaScript and it would be interesting to read through and take note of the various categories of functions and just what they are able to return. 
+   
+Operators
+---------
+
+- remember what we learnt in school + - x / 
+- now in programming there are many more - categorized in the following order: Mathematical, Relational and last, Logical. 
+
+Mathematical 
+	^ 	- to the power of 
+	* 	- multiplication 
+	/ 	- division 
+	\ 	- integer division 
+	MOD 	- modulo division 
+	+	- addition
+	- 	- subtraction 
+
+Relational 
+	<	- less than 
+	>	- greater than 
+	>=	- greater than or equal to 
+	<=	- less than or equal to 
+	=	- equal to 
+	<> 	- not equal to 
+
+Logical	
+	NOT 
+	AND 
+	OR 
+
+- take note of the order of precedence - like BODMAS - but so much more 
+- just remember: brackets still comes first, then functions, then the operators 
+
+* examples 
+	2 ^ 3 	- 2 to the power 3 = 8 
+	2 * 3	- multiplication in programming is an asterik * - not the 'x' like in school 
+
+	7 / 2 	- normal division like a calculator = 3.5 
+	7 \ 2	- integer division - only provides the integer (whole) number as the answer = 3 
+	7 MOD 2	- modulo division - only the remainder as an answer = 1 
+
+	2 + 3 
+	2 - 3 
+	
+	2 < 3 	= true 
+	2 > 3	= false 
+	3 >= 3 	= true 
+	3 <= 3 	= ? 
+	2 = 3	= false 
+	2 <> 3	= true 
+
+	NOT A	- the NOT operator only has one (boolean/logical) operand
+	- if A is false, then the result of NOT A = true 
+	- if A is true, then the result of NOT A = false 
+
+	B AND C - AND operator has 2 (boolean/logical) operands 
+	- in order for the result to be true, both operands must be true, if either of them is false, then 	the result is false 
+
+	true AND true 	= true 
+	true AND false 	= false 
+	false AND true 	= false 
+	false AND false = false 
+
+	* example of using it in programming 
+	(intAge >= 18) AND (blnIsRegistered = true)
+
+	D OR F - OR operator has 2 (boolean/logical) operands
+	- in order for the result to be true, either of the operands need to be true, if both are false, 	then the result is false 		
+
+	true OR true 	= true 
+	true OR false	= true 
+	false OR true 	= true 
+	false OR false 	= false 
+
+Operands and Results
+---------------------
+- operands - the values and/or variables that appear on the sides of the operators 
+- all the operators have 2 operands except for NOT that only have 1 operand 
+
+- each operator, just like how we learnt in school has a purpose and an understanding 
+- mathematical operators have numerical operands and result in numerical values 
+- relational operators can either have numerical, character or string (as a pair of) operands and result in a logical value of either true or false 
+- logical operators have logical values and/or boolean variables and result in a logical value or either true or false 
+
+Expressions and Equations 
+------------------------- 
+
+- the development of expressions and equations forms the core part of your journey into becoming a programmer 
+- you have experienced this during your in time in school - some equations were told you by your teachers and you made to understand that you need to use them to perform a certain task.
+- now we basically take the opportunity and use the idea of variables, along with the various operators and develop our own for what task we wish to execute. 
+
+* in pseudocode 
+	// we need to work out the price of an item, less a discount 
+3.	fltNewPrice = fltPrice - (fltPrice * fltDiscount)	// equation / assignment statement 
+
+- the expression is what appears on the right of the "=" equal to sign 
+- expressions can be used on their own and not be part of an equation, but it exists when we talk about conditions for if..then statements, the while..loop, and the do..while loop (decision and loop logic respectively)
+
+- take note of the examples shared in the notes  
+
+* other code 
+
+3.	x = x = 3 // incorrect - the result of the expression would be logical 
+	// based on the understanding x = 3 would mean that x needs to be a number that is being compared 		// to 3 - therefore the result of the expression cannot be assigned to x because it is likely a 	// numerical variable - a boolean variable would be needed to accept the result of the expression  
+
+* the quadratic equation (part of) - reading something we learnt in school and attempting to convert it to a "one line" equation for an assignment statement in code
+
+	x = (-b + SQRT(b ^ 2 - (4 * a * c ))) / (2 * a)
+
+* also need to learn that through the homework - solving a logical equations helps you understand that the operands will be variables that will serve a purpose and the operators will help make a decision 
+
+	R = A AND B AND (B OR C)
+	R = false AND true AND (true OR false)
+	R = false AND true AND true 
+	R = false AND true 
+	R = false  
+
+Features of Good Program Design 
+-------------------------------
+- use comments where needed - no need to comment every line of code, but place a comment where it would be most effective, to explain a block of code or a line of code that requires more information 
+- identifiers - variable names 
+-- choose them wisely 
+-- nouns for simple things, if a verb is used, then its likely performing an action 
+-- choose meaningful, descriptive names - this makes the program code self-documenting, no need to explain, because the name of the variable explains it... 
+-- choose to use abbreviations wisely 
+-- avoid digits - but if you would like to include them, then place the digit at the end of the word (variable name)
+-- please do not forget the prefix and the concept of Hungarian casing that we are following for this subject 
+
+- design clear statements - this will come with practice, as we develop and discuss more programs
+-- basically, try to write instructions (code) that if we reach the end of the line - know how to end one line and begin on another to show the continuation of an instructions 
+-- if possible, create variables to hold values, so that the output statement can also be presented neatly in the code 
+
+- write clear prompt and output statements 
+-- prompts are a way to be courteous to the end user when requesting an input 
+-- output statements should not only display a value, but once again, be considerate and display a message along with the results so that the user understands what is being shared with them. 
+
+* in pseudocode 
+
+2. 	output "Please enter a number" 
+3.	input intNumber 
+
+?. 	output "The answer is " + intAnswer 
+
+- other points 
+-- plan before you code 
+-- remember the problem solving steps and 
+-- the program development cycle 
+-- maintain the habit of writing down the pseudocode first, then drawing a flowchart 
+-- desk-checking or trace tables will be discussed in the future to help understand how a computer executes a line of code one after the other. 
+-- think carefully about the choice of variable names (and soon modules/procedures/functions)
+-- design program statements that will be helpful and easy to read and is understandable 
+
+Program Code Example  
+--------------------
+
+/*
+ * Title: Calculating the Discount Amount for an Item 
+ * Name: Jessel Sookha
+ * Student Number: ST 
+ * Date: 28 Feb 2025 
+ * Description: 
+	 input the original price 
+	 calculate the discount & new price 
+	 output the new price 
+ */
+
+0. Start 
+1. Declarations 
+	num fltPrice 		
+	num fltDiscount // store discounted amount 
+	num fltNewPrice 
+
+2.	input fltPrice // accept the input into the variable
+
+3.	fltDiscount = fltPrice * 0.2 // calculating the discount amount
+4.	fltNewPrice = fltPrice - fltDiscount
+
+5.	output fltDiscount
+6.	output fltNewPrice 
+
+7. Stop 
+
+
+
+
+
+
+
+
+
