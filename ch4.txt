@@ -1,0 +1,37 @@
+Chapter 4 Sequential Logic
+==========================
+
+- most comon and simplest structure
+- all our solutions use sequential logic 
+- the instructions are processed one after the next in the order that is has been written 
+
+* in pseudocode 
+
+0. Start
+1. Declarations
+	num intHours	// variable to store the number of hours worked 
+	num fltPayRate	// variable to store the rate of pay 
+	num fltWages	// variable created to store the calculated wages value
+
+2. 	output "Enter the number of hours worked in the week"	// prompt
+3. 	input intHours						// value read in and assigned to variable
+
+4. 	output "Enter the rate of pay paid per hour"
+5. 	input fltPayRate
+
+6. 	fltWages = intHours * fltPayRate	// assignment statement 
+7. 	output "The total weeks wages is R" + fltWages	// printing the output 
+8. Stop
+
+// additional point - note that the Rands (R) is hardcoded in the output statement because the unit of measure,
+// in this case, being a monetary value, does not exist within programming - it is understanding  that we have 
+// when dealing with money values, and/or other types of values like 100l (litres), 100km (kilometers), 100m 
+// (meters) - we'll write the instructions for what needs to be done - we'll mention the unit of measure as part 
+// of the storyline - but will not include then in an assignment statment 
+
+// incorrect code 
+
+6.	fltWages = intHours * R150 // R150 is incorrect - should be ... 
+6.	fltWages = intHours * 150 
+
+* in a flowchart - we have practiced this drawing - a simple set of shapes based on the instructions, with a simple flow line down the center from one shapre to the next - remember that when drawing the shapes, there is only one entry and one exit point 
