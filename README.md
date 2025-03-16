@@ -31,13 +31,11 @@ Below you'll find the course's content organized by chapters. Each chapter conta
 
 #### Chapter 3: Logic Structures
 
-- **3_1_1.txt** – Introduction to Control Flow
-- **3_1_2.txt** – 
+- **ch3.txt** – Chapter 3 recap 
 
 #### Chapter 4: Sequential Logic
 
-- **3_1_1.txt** – Introduction to Control Flow
-- **3_1_2.txt** – 
+- **ch4.txt** – Chapter 4 recap
 
 #### Chapter 5: Decision Logic
 
