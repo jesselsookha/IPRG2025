@@ -1,0 +1,656 @@
+Chapter 5 Decision Logic 
+========================
+
+The Decision Logic Structure
+----------------------------
+In Chapter 2, we were introduced to a series of relational and logical operators. Through our discussions, we also learnt how these operators and their respective operands became part of the discussion about equations and expressions. Now the decision logic (selection) structure uses these types of expressions to provide us with the ability to process a decision and then decide to execute a set of instructions or not. 
+
+The statement - if..then -> there are 2 variations we are expected to learn 
+
+- single alternative 
+- if..then statement (if) - when the condition results in being true, then the block of code below is executed. If the condition results in being false, there are no instructions to execute for the if..then statement and then the next instruction in the algorithm is executed. 
+
+- structure 
+
+	if [condition] then 
+		{statements executed if true}
+	endif 
+
+- dual alternative 
+- if..then.else statement (if/else) - when the condition results in being true, then the immediate block of code that follows is executed, but now, if the condition results in being false, then the block after the else keyword is executed. 
+
+- structure 
+	
+	if [condition] then 
+		{statements executed if true}
+	else 
+		{statements executed if false}
+	endif 
+
+- please take note of the structure and the indentation of instructions to help visualize and understand that the if..then statement is the main instruction and anything contained within is indented as needed. Please also note the numbering of the instruction - only the if..then has a number, anything that is inside the statement is not numbered. 
+
+- example 
+	
+3.	if intHours > 40 then 
+		fltNormalPay = 40 * fltRate 
+		fltOverTimePay = (intHours - 40) * fltRate * 1.5 
+		fltPay = fltNormalPay + fltOverTimePay 
+	else 
+		fltPay = intHours * fltRate 
+	endif 
+
+4. 	[next instruction ...] 
+
+* remember that the else part/block is optional - so you need to decide on the intention and use of the executing a decision within your program. 
+
+Conditions [Logical and/or Boolean Expression]
+----------------------------------------------
+
+- Conditions are expressions - the same expressions we spoke about and learnt in Chapter 2. 
+- These expressions have to produce a logical result - a value of true or false to help the if..then statement choose a proper course of action. 
+
+- A condition (the expression) can be 1 of 4 variations: 
+
+-- relational expression - making use of the relational operators (<, >, <=, >=, =, <>) - remember that the operands can either be numerical, character or the string data type - the result of its execution is logical
+
+-- logical / boolean expression - making use of the logical operators (NOT, AND, OR) - remember that the operands are of a boolean data type - the result of its execution is logical 
+
+-- mix of mathematical and/or relational and/or logical operators - this is an interesting one that leads to future notes about compund conditions - the use of the different operators also forces us to realize that the order of precedence is important - since the end result of the condition must be either true or false - we know that when we mix operators, mathematical will happen first, relational will have second and logical will happen third - relational and logical will result in a true or false result for the if..then statement - if (intHours - 40) > 0 then 
+
+-- a variable of a boolean data type - since a condition must produce a result of either true or false, and a variable of a boolean data type contains either true or false - then for the condition for an if..then statement, it is safe to do the following:  
+-- example: 
+	// variation 1 
+	if blnRegistered then 
+		output "you are registered" 
+	endif 
+
+	// variation 2 
+	if blnRegistered then 
+		output "you are registered" 
+	else 
+		output "you are not registered" 
+	endif 
+	
+	| instead of | 
+	
+	// variation 3 
+	if blnRegistered = true then 
+		output "you are registered" 
+	endif 
+
+-- if the variable contains the value of true - then the immediate code after - the true block is executed - if the if..then statement dealt with the false value *variation 2* - then the else part is executed - *variation 3* offers a relational expression - its doing the same thing as above, but its not the same condition. 
+
+** pseudocode example 
+
+
+0. Start 
+1. Declarations 
+	num intHours 	// used to accept the input of the hours worked in a week 
+	num fltPayRate  // used to accept the input of the rate of pay paid per hour 
+	num fltWages 	// will be used to store the wages amount to be paid 
+
+2. 	output "Please enter the number of hours worked in a week"
+3. 	input intHours 
+
+4. 	output "Please enter the rate of pay per hour of work" 
+5.	input fltPayRate 
+
+6.	if intHours > 40 then // determine if the employee worked for more than 40 hours 
+		fltWages = (40 * fltPayRate) + ((intHours - 40) * fltPayRate * 1.5) // overtime pay
+	else 
+		fltWages = intHours * fltPayRate // normal pay 
+	endif 
+
+7.	output "The wages paid to the employee is R" + fltWages
+
+8. Stop 
+
+----------------------------------------------------
+alternate version of the if..then statement - take note of the condition
+----------------------------------------------------
+0. Start 
+1. Declarations 
+	num intHours 	// number of hours worked in the week 
+	num fltRate	// rate of pay paid per hour 
+	num fltWages 
+
+2.	output "Enter hours worked " 
+3.	input intHours 
+
+4.	output "Enter rate of pay" 
+5.	input fltRate 
+
+6.	if intHours <= 40 then 
+		fltWages = intHours * fltRate // normal pay 
+	else 
+		fltWages = (40 * fltRate) + ((intHours - 40) * fltRate * 1.5)
+	endif 
+
+7. 	output "The wages is R" + fltWages 
+8. Stop 
+----------------------------------------------------
+	// a different way to process the information 
+
+6.	intOvertimeHours = intHours - 40 
+7.	fltNormalPay = 40 * fltRate 
+
+8.	if intOvertimeHours > 0 then 
+		// overtime pay 
+		fltWages = fltNormalPay + (intOvertimeHours * fltRate * 1.5)
+	else 
+		fltWages = fltNormalPay 
+	endif 	
+
+
+**
+in the following sections that present examples of using different operators in the development of the conditions needed for an if..then statement, it is important to remember that you are responsible to evaluate and understand the question that is presented in order to determine how and why you are using the operators in expression 
+**
+
+The relational comparison operators
+-----------------------------------
+- introduced in chapter 2 along with all the other operators 
+- <, >, <=, >=, =, <> - operators that are now also used to build logical expressions 
+- remember that there are 2 operands for these operators. they can either be numerical (integer or float), or character, or string - but its important that both operands are of the same data type 
+- these operators, once evaluated and used, produce a logical result - true or false 
+
+** pseudocode example 
+
+// the example presents a relational expression that looks at the number of hours that the employee has worked for - if they have worked for more than 40 hours, that means that they need to be paid the normal pay and include their overtime pay as well - if the employee worked for 40 hours or less - then they are only being paid their normal pay. 
+
+?.	if intHours > 40 then 
+		// calculate normal + overtime pay 
+	else 
+		// calculate normal pay 
+	endif 
+
+// another example - awarding a 30% discount if the total sales is greater than or equal to 10 000 and if its less than 10 000 - then only awarding a 15% discount 
+ 
+?.	if fltTotalSales >= 10000 then 
+		fltDiscountPerc = 0.3	
+	else 
+		fltDiscountPerc = 0.15
+	endif 
+
+// alternative to the above example - sometimes, when reading through a question (and/or customer documentation) - our condition may not follow exactly what the documentation states. This can be because our understanding and homework of the data, leads us to decide on a different idea, but still ending up with the same result. One of the reason for attempting this, is to make our execution (and our understanding) more efficient - commenting would help to explain this idea to others. 
+
+?.	if fltTotalSales < 10000 then 
+		fltDiscountPerc = 0.15	
+	else 
+		fltDiscountPerc = 0.3
+	endif 
+
+
+** remember to be concerned with logical errors that could occur if we choose to use the wrong relational operator - less than < is different from less than or equal to <= / the same can be said about the others as well
+** the opposite of < is >= / > is <= / = is <> / remember this when thinking and executing when the expression/condition is true and when the expression/condition is false
+
+AND Logic (Boolean Operator) 
+----------------------------
+- When we consider using the AND operator, we know from Chapter 2 that we require 2 logical operands - likely being 2 boolean variables 
+
+?.	if blnRegistered AND blnVerified then 
+
+- Then there are times when the AND operator is used to combine expressions - leading to the idea that in order to execute the {true statements} - more than 1 expression needs to be true 
+
+?. 	if intMark >= 90 AND intMark <= 100 then 
+
+* 2 relational expressions that need to be true - in order for the 3rd operator - AND - to be evaluated and hopefully get a true result ... 
+
+OR Logic (Boolean Operator)
+---------------------------
+- Similar to the notes presented above - using the OR operator, either of the operands needs to be true in order for the result of the expression to be true. 
+- We may choose to use OR when after reading through a question (and/or customer documents) and decide that the expression requires that either piece of information needs to be true in order for the if..then statement to perform the work as required. 
+
+NOT Logic (Boolean Operator)
+----------------------------
+- NOT reverses the value of the logical expression (or variable) 
+
+?. 	blnFlag = false 
+?.	if NOT blnFlag then // NOT false = true - making the result of the condition true  
+		{statements executed because condition was true}
+	else 
+		{statements executed because condition was false}
+	endif 
+
+- as mentioned in the notes, it is difficult to just know when and where you would use the NOT operator in the development of condition - this will come through the practice of different examples, reading through exisiting customer documents and understanding the coding to be as efficient as you can possibly make it. 
+
+Multiple if..then..else statements
+----------------------------------
+- one program does not always contain just one if..then statement - there are times when we need to execute multiple if..then statements - the following information offers different scenarios and in-turn helps you to decide which form you would use and again, based on your understanding, the code that would make the program as efficient as possible. 
+
+- there are 3 variations of multiple if..then statements that we need to learn: 
+straight-through logic, 
+positive logic and 
+negative logic 
+
+** 
+positive and negative logic is code that contains multiple if..then statements, but that they are nested if..then statements - if..then statements inside of one another 
+**
+
+- straight-through logic - 
+- these are multiple if..then statements that are executed/processed sequentially. 
+- most of the time - there is no else block to the if..then statement (not always the case though)
+- the interesting thing is that while there are multiple if..then statement, it is possible for a storyline to make you believe that the statements are related - this may be true and if you read through, you might be inclined to think that an if..then..else statement is justified - you are going to have to decide for yourself if this is needed or not.  
+
+** pseudocode 
+
+0. Start 
+1. Declarations 
+	num intAge 
+
+2.	output "Enter age" 
+3.	input intAge 
+
+4.	if intAge > 16 then 
+		output "You can apply for your Learner's License" 
+	endif 
+
+5.	if intAge > 18 then 
+		output "You can go vote" 
+	endif 
+
+6. Stop 
+
+----------------------------------------------------
+- now we would think the following is okay - because in the above example - both the conditions deal with referencing the age of the user
+
+4.	if intAge > 16 then 
+		output "You can apply for your Learner's License" 
+	else 
+		output "You can go vote" 
+	endif 
+
+- unfortunately we are incorrect in doing this -- why ? 
+- in our discussions in class - if the age is 17 - then the condition is true and outputs the Learner's License and the output about the vote will never happen - if the age is 19 - based on the original code above - you are suppose to output the vote - but in this if..then..else statement that is not going to happen because - the opposite version of intAge > 16 is actually intAge <= 16 - so while the 2 conditionsare about the age, their results are different - so keeping as separate if..then statements is the way to go ...
+
+**
+- the manual offers many examples, so it is important to read through it and use this as an addition. 
+- remember these catch up notes is more of what we attempted in class discussions
+**
+
+- positive logic -&- negative logic - 
+ 
+- these are multiple *nested* if..then statements that offers a level of efficieny to the time it takes to process instructions - this is better understood when we present an example -  
+- this type of logic is used when we are presented with a range of values 
+
+* +ve logic - the simple rule is that in a nested set of if..then statements, when the condition results in being true then an instruction is executed, if the result of the condition is false, then another if..then statement is executed in the set of ranges - when we reach the end of the range, the last remaining true instruction will actually be the previous if..then statment's false instruction (technically meaning that if we have 5 ranges to deal with, 4 if..then statements will be coded)
+
+* -ve logic - the simple rule is that in a nested set of if..then statements, when the condition results in being true then the next if..then statement is coded and if the result of the condition is false, then an instruction is executed - when we reach the end of the range, the last remaining false instruction will actually be the previous if..then statment's true instruction (technically meaning that if we have 5 ranges to deal with, 4 if..then statements will be coded) 
+
+** while the above information may seem confusing - it is important again to revisit the manual notes, these notes, and to practice through the homework to have a better understanding. 
+
+** example 
+
+- Input the marks for an assessment and output the associated letter grade
+- The grade is determined through a range of values, presented below: 
+ 
+	Marks		Grade 
+	----------------------
+	90 - 100	A
+	80 - 89		B
+	70 - 79 	C 
+	60 - 69 	D 
+	50 - 59 	E 
+	< 50 		F
+
+** pseudocode 
+
+0. Start 
+1. Declarations
+	num intMark 
+	string strGrade 
+
+2.	output "Enter the mark for the assessment " 
+3.	input intMark 
+
+4.	if (intMark >= 90) AND (intMark <= 100) then 
+		strGrade = "A" 
+	endif 
+
+5.	if (intMark >= 80) AND (intMark <= 89) then 
+		strGrade = "B" 
+	endif 
+
+6.	if (intMark >= 70) AND (intMark <= 79) then 
+		strGrade = "C" 
+	endif 
+
+7.	if (intMark >= 60) AND (intMark <= 69) then 
+		strGrade = "D" 
+	endif 
+
+8.	if (intMark >= 50) AND (intMark <= 59) then 
+		strGrade = "E" 
+	endif 
+
+9.	if intMark < 50 then 
+		strGrade = "F" 
+	endif 
+
+10.	output "The grade is " + strGrade
+
+11. Stop 
+
+// based on the previous lessons above, when we consider the processing required, 
+// our immediate reaction is to  develop separate if..then statements for each range. 
+// we also coded the conditions fully, using the AND operator and *both sides* of the 
+// range values 
+
+// there is nothing wrong with the above code - technically following the straight-through 
+// logic concept - but this code is not efficient - if all the students got high marks, then 
+// maybe only the first 2 if..then statements are true and the rest are false - again - 
+// nothing wrong with this - but is it necessary ? 
+
+----------------------------------------------------
+// the following is the start of developing nested if..then statements using positive logic
+// note that for every condition that results in being true - an instruction is executed
+// for every false - another if..then statement is executed - 
+// ** HOWEVER ** this is not the final version 
+// take note of the last 2 if..then statements - in the second last if..then statement 
+// its false is less than 50 - so is it necessary to test the mark in the "last" if..then 
+// statement ? 
+
+4.	if (intMark >= 90) AND (intMark <= 100) then 
+		strGrade = "A" 
+	else 
+		if (intMark >= 80) AND (intMark <= 89) then 
+			strGrade = "B" 
+		else  
+			if (intMark >= 70) AND (intMark <= 79) then 
+				strGrade = "C" 
+			else  
+				if (intMark >= 60) AND (intMark <= 69) then 
+					strGrade = "D" 
+				else  
+					if (intMark >= 50) AND (intMark <= 59) then 
+						strGrade = "E" 
+					else  
+						if intMark < 50 then 
+							strGrade = "F" 
+						endif
+					endif 
+				endif 
+			endif 
+		endif 
+	endif  
+
+----------------------------------------------------
+// note the edit at the bottom ... 
+
+4.	if (intMark >= 90) AND (intMark <= 100) then 
+		strGrade = "A" 
+	else 
+		if (intMark >= 80) AND (intMark <= 89) then 
+			strGrade = "B" 
+		else  
+			if (intMark >= 70) AND (intMark <= 79) then 
+				strGrade = "C" 
+			else  
+				if (intMark >= 60) AND (intMark <= 69) then 
+					strGrade = "D" 
+				else  
+					if (intMark >= 50) AND (intMark <= 59) then 
+						strGrade = "E" 
+					else  
+						strGrade = "F" 
+					endif
+				endif 
+			endif 
+		endif 
+	endif 
+
+// now in the above statements - there is still a little more we could do to achieve 
+// a proper set of nested if..then statements that follow the understanding of positive logic. 
+// all the above conditions are compund conditions (discussed later in the chapter) - 
+// nothing wrong - but - if we look, for example,  M >= 60 - the opposite is M < 60 - which is 
+// the same as M <= 59 ... so if the obvious false of a condition result is known - is it necessary 
+// to still have it apart of another condition ? could we just leave this part out - yes, we can ... 
+  
+----------------------------------------------------
+// this is now the positive logic that we need to learn and understand - note the progression 
+// from the above programs that lead to this result in the code  
+
+4.	if intMark >= 90 then 
+		strGrade = "A" 
+	else 
+		if intMark >= 80 then 
+			strGrade = "B" 
+		else  
+			if intMark >= 70 then 
+				strGrade = "C" 
+			else  
+				if intMark >= 60 then 
+					strGrade = "D" 
+				else  
+					if intMark >= 50 then 
+						strGrade = "E" 
+					else  
+						strGrade = "F" 
+					endif 
+				endif 
+			endif 
+		endif 
+	endif  
+
+----------------------------------------------------
+// not for negative logic - its a different way of thinking - the processing of the instructions 
+// follows that for every condition that results in true, another if..then statement is executed 
+// and for every false - the instruction is executed - 
+
+4.	if intMark < 90 then 
+		if intMark < 80 then 
+			if intMark < 70 then 
+				if intMark < 60 then 
+					if intMark < 50 then 
+						strGrade = "F" 
+					else 
+						strGrade = "E" 
+					endif 
+				else 
+					strGrade = "D" 
+				endif 
+			else 
+				strGrade = "C"
+			endif 
+		else 
+			strGrade = "B"
+		endif 
+	else 
+		strGrade = "A"
+	endif 
+
+// while we as programmers at this point is not going to immediately see the results of changing 
+// the logic - it will make sense when we realise and understand the data that is going to be processed 
+// then the type of logic we use - will help us in knowing that the program is working as efficiently 
+// as possible 
+
+----------------------------------------------------
+// alternative to positive logic - instead of reading the ranges as it has been presented ... 
+// we can look at the ranges in the opposite direction (from bottom to top) 
+
+4.	if intMark < 50 then 
+		strGrade = "F"
+	else 
+		if intMark < 60 then 
+			strGrade = "E"
+		else 
+			if intMark < 70 then 
+				strGrade = "D"
+			else 
+				if intMark < 80 then 
+					strGrade = "C"
+				else 
+					if intMark < 90 then 
+						strGrade = "B"
+					else 
+						strGrade = "A"
+					endif 
+				endif
+			endif 
+		endif 
+	endif 
+
+
+----------------------------------------------------
+// alternative to negative logic - instead of reading the ranges as it has been presented ... 
+// we can look at the ranges in the opposite direction (from bottom to top) 
+
+4.	if intMark >= 50 then
+		if intMark >= 60 then 
+			if intMark >= 70 then 
+				if intMark >= 80 then 
+					if intMark >= 90 then 
+						strGrade = "A"				
+					else
+						strGrade = "B"
+					endif 
+				else
+					strGrade = "C"
+				endif 
+			else 
+				strGrade = "D" 
+			endif 
+		else 
+			strGrade = "E" 
+		endif 
+	else 
+		strGrade = "F" 
+	endif  
+
+----------------------------------------------------
+
+- when we ask the question ? we are expected to learn all these variations, how do we know 
+- which version and variation do we use ? 
+- we can ask ourselves the following questions: 
+a.	Which type would make the solution most readable? 
+b.	Which type would make the solution the easiest to maintain or change? 
+c.	Which would require the fewest tests when you don't know anything about the data? 
+d.	Which would require the fewest test when you are given some data? 
+
+- through the many examples, and practicing of the development of programs, we would be able 
+- to answer these questions and know which type would best suit the solution we are developing 
+
+
+// the following is also an example of nested if..then statements - but not immediately the 
+// ideas shared above 
+
+?. 	if strPayType = "Hourly" then 
+		if intHours > 40 then 
+			fltPay = fltRate * 1.5 * (intHours - 40) + (40 * fltRate)
+		else 
+			fltPay = intHours * fltRate 
+		endif 
+	else 
+		fltPay = fltSalaryAmount 
+	endif 
+
+// still nested if..then statements - it follows the logic needed for the type of solution 
+// we are likely developing 
+
+
+Compound Conditions
+-------------------
+- briefly shown above 
+
+	if (intMark >= 90) AND (intMark <= 100) then 
+		strGrade = "A" 
+	endif 
+
+- this condition combines multiple conditions into a compound condition 
+- using the above code - let's take a small step back and code these statements 
+- separately - but nested ... 
+
+	if intMark <= 100 then 
+		if intMark >= 90 then 
+			strGrade = "A" 
+		endif 
+	endif 
+
+- the above code is interesting - but not efficient - both the conditions is about 
+- the marks and both are leading to the instruction - strGrade = "A" - so to combine 
+- them into a compund condition makes sense 
+
+	if (intMark >= 90) AND (intMark <= 100) then 
+
+- using the AND operator should be understood - 2 relational expressions are evaluated first 
+- and then the AND operator will determine if the instruction that follows is executed or not ... 
+
+
+- also - its not just the AND operator - OR and NOT can be used to develop a compund condition 
+- the example in the manual also helps you see this - but through practice, we will be able to 
+- better understand what we are doing, what is allowed, or not, what will be most efficient when 
+- we read through a user's problem ... 
+
+
+The case structure/statement 
+----------------------------
+- when there are several *distinct* possible values for single variable, we would consider using a case statement instead of a series of if..then statements like how we learnt above
+- the case statement evaluates the variable mentioned and based on the possible value that it would be equal to - we will excute one or more instructions for that value. 
+
+** pseudocode with if..then 
+
+6.	if intEmploymentYear = 1 then 
+		fltDiscount = 0
+	else 
+		if intEmploymentYear = 2 then 
+			fltDiscount = 0.05
+		else 
+			if intEmploymentYear = 3 then 
+				fltDiscount = 0.1
+			else 
+				if intEmploymentYear = 4 then 
+					fltDiscount = 0.15
+				else 
+					if intEmploymentYear = 5 then 
+						fltDiscount = 0.2
+					endif 
+				endif 
+			endif 
+		endif
+	endif  
+		
+----------------------------------------------------
+** pseudocode with case statement 
+
+// note the simpler version now because we are using the case statement 
+
+0. Start
+1. Declarations
+	num intEmploymentYear
+	num fltDiscount
+	num fltSalesAmount
+	num fltTotalPayable
+	num intFlag 
+
+2. 	output " Please enter total sales of your purchases "
+3. 	input fltSalesAmount
+
+4. 	output "Please enter your year of employment (1 - 5)"
+5. 	input intEmploymentYear
+
+6. 	case of intEmploymentYear
+		1: fltDiscount = 0
+		2: fltDiscount = 0.05
+		3: fltDiscount = 0.1
+		4: fltDiscount = 0.15
+		5: fltDiscount = 0.2
+		default: intFlag = 0
+	endcase
+
+7.	if intFlag = 0 then 
+		output "Does not qualify for a discount"
+		fltTotalPayable = fltSalesAmount 
+	else  	
+		fltTotalPayable = fltSalesAmount - (fltSalesAmount * fltDiscount)
+ 	endif 
+
+8.	output "The total payable is R" + fltTotalPayable
+
+9. Stop
+
+
+- while we will definitely find the need to code and use the case statement in programs 
+- please do note the simplicity of this version as compared to what other programming languages offer and not mix the programming learnt elsewhere with this one 
+- another thought we come across, when would we need to use the case statement? - so that was mentioned above - when we have distinct values that need to be tested, then the case statement is better suited for the solution. 
+- another programming solution where the case statement is used - is when we have a "MENU of choices" that we need to implement - the case statement, along with a loop will help greatly to develop the kind of solution that would make sense 
+
+
