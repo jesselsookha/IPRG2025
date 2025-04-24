@@ -39,7 +39,7 @@ Below you'll find the course's content organized by chapters. Each chapter conta
 
 #### Chapter 5: Decision Logic
 
-- 
+- **ch5.txt** – Chapter 5 recap
 
 #### Chapter 6: Loop Logic
 
