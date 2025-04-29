@@ -43,7 +43,7 @@ Below you'll find the course's content organized by chapters. Each chapter conta
 
 #### Chapter 6: Loop Logic
 
-- 
+- **ch6.txt** – Chapter 6 recap
 
 #### Chapter 7: Arrays
 
