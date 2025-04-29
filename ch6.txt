@@ -1,0 +1,780 @@
+Chapter 6 Loop Logic 
+====================
+
+Introduction 
+------------
+- when we need to execute the same instructions repeatedly, then we need to implement the use loop logic structure. 
+- when needing to implement the loop logic structure - it is important that we need to identify the instructions that need to be repeated and in what order - so please remember the work learnt in sequential logic and decision logic since it is also apart of the work we have covered in this chapter
+
+- 3 types of loops 
+
+-- while..loop - loop is dependent on a condition - while the condition is true, the instructions within are repeated and stops when the condition results in being false ** it is possible that the instructions within the loop might never be executed if the condition is false at the beginning - leading to us needing to take this in consideration when setting out our instructions 
+
+-- do..while loop - loop is similar to the while..loop - it is also dependent on a condition - while it is true, the instructions within are repeated and stops when the condition results in being false - there is one important difference compared to the while..loop - here - the instructions within the loop are executed at least once before executing the condition that decides if the loop is repeated or stopped. 
+
+-- for..loop - the loop is dependent on a control variable, an integer variable - it is setup to execute a set number of times with a given incremental value - when the control variable is greater than the ending number, the loop is ended. 
+
+Common Tasks Executed when Using Loops
+--------------------------------------
+- there are 2 common tasks we execute - also it is commonly noted in our programs 
+-- incrementing / decrementing 	** counting
+-- accumulating 		** adding up a value 
+
+- both these tasks requires that we add (or subtract) a value from a variable and the result is stored back into that variable for the processing of the loop to be logically sound. 
+- remember that these are assignment statements - the variable on the left is assigned the value of the result of executing the expression on the right hand side 
+
+- incrementing / decrementing - when counting (up or down) - the value is a constant number 
+
+** pseudocode 
+	// incrementing 
+	intCount = intCount + 1 // incrementing by 1 each time the loop would repeat this instruction 
+	intNumberOfStudents = intNumberOfStudents + 1 
+
+	// decrementing 
+	intCount = intCount - 1 // decrementing by 1 each time the loop would repeat this instruction 
+
+- accumulating - when adding up a value - the value is a variable - the key difference is that we as the programmers do not know is the value for this variable - it could be different each time the loop is repeated (this variable might likely be a value that is entered by the user - or it could, in the future, something that we are reading from a data source, like an array in Ch7)
+
+** pseudocode 
+	intSum = intSum + intVariable // adding up based on the value of the variable 
+	fltTotalAmount = fltTotalAmount + fltProductPrice // the price could be different each time 
+
+* important to remember that for both incrementing and accumulating the variables (on the left of the assignment statement) that is being used to take on the result through the execution of these statements needs to be initialized before these statements are executed - this is likely meant to happen before the loop begins as its own assignment statement or you might choose to initialize the value of the variable at declaration - the choice might affect how you process the instructions, so think before you do what needs to be done
+
+Sentinel Value / Flag / Indicator 
+---------------------------------
+- in the processing of instructions inside (and outside) or a loop, a variable is used to control the loop - this variable might be via the input provided by the user or be a value affected with the way we code our instructions in the program 
+
+- these variables are known by many names - - they are similar in function - each is accepted in a different context in different scenarios, depending on the logic of the program - these variables are signals used when a loop should stop or continue - or even "tell" the program to change the flow of the program
+
+- sentinel value - a special value used to indicate the end of a "data set" - it is entered by the user and is not part of the actual data - when the loop detects this value, it stop running
+
+** pseudocode 
+	
+2.	output "Please enter a value [999 to stop processing]: " 
+3.	input intValue 
+
+4.	while intValue <> 999 // 999 is the sentinel value 
+		output "Current value entered : " + intValue 
+		output "Please enter a value [999 to stop processing]: " 
+		input intValue 
+	endwhile 
+	...	
+
+- the loop stops when intValue = 999 - making the above relational expression false 
+
+- flag - a boolean-style variable used to track a condition during a process - usually consider an actual boolean variable with the values of true or false representing the programming logic in some form for our program - 
+
+** pseudocode 
+
+2.	strChosenDirection = "North" 
+3.	blnFlag = false 
+
+4.	while blnFlag = false // the loop continues until the flag changes 
+		output "Enter direction: " 
+		input strDirection 
+		if strDirection = strChosenDirection then 
+			blnFlag = true 
+		endif 
+	endwhile 
+
+- indicator - similar to a flag but may just be more than true and false values (the variable might not be in control of the loop - this means that such a variable might exist for the same purpose but might be ued differently - still an indication to change the flow of a program) - used to indicate a state or a specific point reached in a stage of processing 
+
+** example - an error indicator - which can inform the program an error has occurred during the processing of the program and that it needs to be dealt with in some form - maybe also informing the user 
+
+** example - in the future - we are going to explore reading data from other sources - for example, a file - we could use an indicator (end of file) variable to inform the processing (in the program) that there is no more data to be read and therefore should leave the loop that is processing that file data 
+
+- all of these types of variables is the choice of the programmer when it comes to the data type, the value that represents the changing of the flow of the program (a sentinel value, a boolean value or possibly some other value, integer or string or character may be considered)
+
+- ask yourself the following questions:
+-- what is the purpose of the variable? 
+-- where is it going to be used? 
+-- what do the value/s represent in order change the flow of the procesing? 
+
+- sometimes programmers use these variables internally and the user has no knowledge of these being used in the processing of the program - again - used to indicate the flow of processing based on the programmer's logic they wish to implement
+
+while..loop 
+-----------
+- this type of loop basically tells the computer that while the condition is true, to repeat the instructions inside the loop - when the result of the condition is false, the processing will "exit" the loop and proceed to the next instruction 
+
+- because the condition is tested before the instructions inside is executed, it is entirely possible that the instructions inside may never be executed - leading to us, programmers deciding on our programming logic being implemented
+
+** the order of instructions is vitally important, what is coded before, inside the loop and after the loop is exited. 
+
+-> using a sentinel value - the processing of the instructions inside the loop is dependent on the variable intAge, in this example, which is "controlled" by the user inputting this value upon seeing the prompt to input the value - if the sentinel value is entered, then the loop is likely going to be exited/stopped
+
+** pseudocode 
+
+0. Start 
+1. Declarations 
+	num intAge 
+	num intTotalAge 
+	num intNumStuds 
+	num fltAverage
+
+2.	intTotalAge = 0 	// initializing the accumulating varaible 
+3.	intNumStuds = 0		// initializing the incrementing varaible 
+
+	// primer read
+4.	output "Enter age (-1 to Stop)"	// present the sentinel value in the prompt statement 
+5.	input intAge 
+
+6.	while intAge <> -1	// sentinel value is used to decide on entry/exit of the loop
+		intNumStuds = intNumStuds + 1 // counting the number of students 
+		intTotalAge = intTotalAge + intAge  // accumulating the age of the students 
+		// reading in the subsequent ages 
+		output "Enter age (-1 to Stop)" // asking the user for the subsequent age 
+		input intAge
+	endwhile  
+
+7.	fltAverage = intTotalAge / intNumStuds
+
+8.	output "The average age is " + fltAverage 
+
+9. Stop 
+
+- in the above code - take note of the repeated instructions - once before the loop begins and then repeated inside the loop 
+
+	output "Enter age (-1 to Stop)"	
+	input intAge 
+
+- we call the initial set the primer read - executed once - before the loop begins - this is because that loop is dependent on the input variable - also the reason why its repeated inside the loop is because of the rules/logic of the loop - once inside - we are stuck inside - and will only leave when the condition that is set, results in being false - so because the condition is dependent on the input - the input is repeated 
+
+** the order of instructions in the loop is just as important as the order of instructions in the whole program - while we may think of changing the order - if it is not logically sound - we can cause a logical error to occur 
+
+** in the above code and explanations, the loop is noted for being an indefinite loop - because the processing is dependent on the user inputting the values, we do not know how many times the instructions in the loop is going to be executed ** so when the following section is now presented 
+
+** we learn that a loop could be dependent on something else 
+
+-> using a counter - when we know how many times to repeat the instructions - we can make the loop dependent on the counting variable - effective creating a definite loop that will execute a predetermined number of times - the counting variable could count up, increment, or could count down, decrement - it is up to us to decide 
+
+- it is also the responsibility of the programmers to code the required instructions to control the variable; 
+** the initialization, 
+** the condition for managing the loop and 
+** the incrementing statement, to process the data accordingly
+
+** pseudocode 
+
+0. Start 
+1. Declarations 
+	num intAge 
+	num intTotalAge 
+	num intNumStuds 
+	num fltAverage
+
+2.	intTotalAge = 0 
+3.	intNumStuds = 0	// initialize the counting variable 
+
+6.	while intNumStuds <= 25 // 25 is set to be the number of times this loop will execute
+		output "Enter age"
+		input intAge
+		intNumStuds = intNumStuds + 1 // increment the counting variable which happens to be in control 
+		intTotalAge = intTotalAge + intAge  
+	endwhile  
+
+7.	fltAverage = intTotalAge / intNumStuds
+
+8.	output "The average age is " + fltAverage 
+
+9. Stop 
+
+* a possible logical error - note the code from earlier - what if the user ran the program and then decided to enter the sentinel value at the beginning - meaning that the program will not process any instructions inside the loop 
+
+** pseudocode 
+
+0. Start 
+1. Declarations 
+	num intAge 
+	num intTotalAge 
+	num intNumStuds 
+	num fltAverage
+
+2.	intTotalAge = 0 	
+3.	intNumStuds = 0		
+
+4.	output "Enter age (-1 to Stop)"	
+5.	input intAge // what if the user enters -1 to begin with? 
+
+6.	while intAge <> -1	// sentinel value is entered - condition will result in being false - loop exit 
+		intNumStuds = intNumStuds + 1 
+		intTotalAge = intTotalAge + intAge  
+		output "Enter age (-1 to Stop)" 
+		input intAge
+	endwhile  
+
+7.	fltAverage = intTotalAge / intNumStuds 	// the execution of this statement fltAverage = 0 / 0 - error? 
+
+8.	output "The average age is " + fltAverage 
+
+9. Stop 
+
+- how would we deal with the following issue? the calculation of the average is not possible 
+
+** pseudocode correction - note the if..then statement and its condition 
+
+0. Start 
+1. Declarations 
+	num intAge 
+	num intTotalAge 
+	num intNumStuds 
+	num fltAverage
+
+2.	intTotalAge = 0 	
+3.	intNumStuds = 0		
+
+4.	output "Enter age (-1 to Stop)"	
+5.	input intAge // what if the user enters -1 to begin with? 
+
+6.	while intAge <> -1	// sentinel value is entered - condition will result in being false - loop exit 
+		intNumStuds = intNumStuds + 1 
+		intTotalAge = intTotalAge + intAge  
+		output "Enter age (-1 to Stop)" 
+		input intAge
+	endwhile  
+
+7.	if intNumStuds = 0 then // there might be alternatives to this condition if well-thought out 
+		output "There is no average to display" 
+	else 
+		fltAverage = intTotalAge / intNumStuds 	
+		output "The average age is " + fltAverage 
+	endif 
+
+8. Stop 
+
+do..while loop
+--------------
+- similar to the while..loop - also tests a condition and if the result is true, the loop will repeat and if the result of the condition is false - the loop will be stopped and the next instruction is executed
+
+- one notable difference in the coding of this loop - it executes the instructions inside the loop at least once and then tests the condition - so in the while..loop - the condition is tested first before entry into the loop and here in the do..while loop, the condition is tested at the end of the loop 
+
+- because of this understanding the coding of instructions will need to be well-thought out once again - since the rules are different - note the 2 versions of the code below: 
+
+** pseudocode - the code from the manual - similar to the while.loop example - except that the condition is tested at end of the loop - also take note that the sentinel value is different - different for a reason ... 
+
+0. Start 
+1. Declarations 
+	num intAge 
+	num intSum 
+	num intCount 
+	num fltAverage 
+
+2.	intSum = 0 	// initialised with a starting number 
+3.	intCount = 0	// initialised with a starting number 
+	
+4.	output "Please enter age of the student (0 to stop processing)" 
+5.	input intAge 
+
+6.	do
+		intCount = intCount + 1	// incrementing - number of students 
+		intSum = intSum + intAge // accumulating - the ages of the students 
+		output "Please enter age of the student (0 to stop processing)" 
+		input intAge 
+	while intAge <> 0
+ 
+7.	fltAverage = intSum / intCount 
+8. 	output "The average age of the students in this group is " + fltAverage 
+
+9. Stop 
+
+** pseudocode - this example below was discussed in class - where the order of instructions and the "repetition of the input" was changed - we decided that since you are allowed inside the loop at least once - then could we remove the input before the loop (like in the above example) and just write it only once inside the loop - also because of this thinking - the order of instructions is also changed 
+
+0. Start 
+1. Declarations 
+	num intAge 
+	num intTotalAge 
+	num intNumStuds 
+	num fltAverage
+
+2.	intTotalAge = 0 
+3.	intNumStuds = 0
+
+4.	do
+		output "Enter age (-1 to Stop)"
+		input intAge
+		intNumStuds = intNumStuds + 1 
+		intTotalAge = intTotalAge + intAge  
+	while intAge <> -1  
+
+7. 	if intTotalAge = -1 then 
+		output "There is no average to display" 
+	else 
+		fltAverage = intTotalAge / intNumStuds
+		output "The average age is " + fltAverage 
+	endif 
+8. Stop 
+
+- doing this now created another error - when the program is inside the loop and the user, decides that they need to end the processing of data, they are going to enter -1 to stop the loop - stop the processing of data 
+
+- but since the condition is at the end of the loop - there are 2 instructions before that 
+- the incrementing statement is going to count this "student" so we are adding 1 more than the number of students being processed 
+- and then the accumulating variable is going to accumulate -1, changing the end result of what the intTotalAge suppose to be 
+
+- so changing the instructions, created a logical error for us / also ** what if the user entered valid ages for a given set of data and then entered -1 to end the processing of the loop - this also means that -1 is going to be taken into account for the total and the count - which is what we do not want ... 
+
+** pseudocode - the fix - kind of ... - why kind of? - because does it fix all our problems? 
+
+0. Start 
+1. Declarations 
+	num intAge 
+	num intTotalAge 
+	num intNumStuds 
+	num fltAverage
+
+2.	intTotalAge = 0 
+3.	intNumStuds = 0
+
+4.	do
+		output "Enter age (-1 to Stop)"
+		input intAge
+		intNumStuds = intNumStuds + 1 
+		intTotalAge = intTotalAge + intAge  
+	while intAge <> -1  
+
+7. 	if intTotalAge = -1 then // is the right condition to deal with all possible variations of input? 
+		output "There is no average to display" 
+	else 
+		fltAverage = (intTotalAge + 1) / (intNumStuds - 1) // note this correction !!!
+		output "The average age is " + fltAverage 
+	endif 
+8. Stop 
+
+* in order to stop this type of issue - we might as well should have just stuck to using a while..loop and not the do..while loop - but again, this will become your choice - the loops are not specific for a specific situation - we will learn to decide based on the logic we wish to implement 
+
+**
+there will be a need for implementing each type of loop when we learn more about a storyline and decide on the programming logic 
+**
+
+
+for..loop
+---------
+- this type of loop is set to repeat a given number of times - this means that the control variable is provided with a starting number, an ending number and an incremental/step value to set things up - so that the loop repeats, again, for a given number of times 
+
+** pseudocode 
+
+0. Start
+1. Declarations 
+	num intAge 
+	num intCount 	// note that it is not initialized - because it will be within the loop 
+	num intSum = 0	
+	num fltAvg 
+
+2.	for intCount = 1 to 25 Step 1	// variable = starting number to ending number - step by/increment by number
+		output "Enter Age" 
+		input intAge 
+		intSum = intSum + intAge 
+	endfor 
+
+3.	fltAvg = intSum / 25	// divide by 25 because we know the number of people in this set 
+4.	output "The average age is " + fltAvg 
+
+5. Stop 
+
+** javascript 
+- the for..loop is written quite different to pseudocode - but the 3 parts is still noted - slight variations to the incrementing third part in each of the examples shared below: 
+
+- v1 - for (intCount = 0; intCount < 25; intCount = intCount + 1) {}
+- v2 - for (intCount = 0; intCount < 25; intCount++) {}
+- v3 - for (intCount = 0; intCount < 25; intCount+=1) {}
+
+// also - note the difference to the starting number - and the condition to 'stop' the loop 
+- v4 - for (intCount = 1; intCount <= 25; intCount++) {}
+
+- the following are interesting if we would like to execute a loop and only "look" at the even numbers for the counting variable 
+
+	for intCount = 0 to 100 Step 2
+
+- then the following is also incrementing by 2 for each iteration of the loop - but still will be counting the odd numbers 
+
+	for intCount = 1 to 100 Step 2 
+
+- why? - because of the starting number that the variable was initialized to 
+- starting at 0 - next number in the iteration is 2 and the next is 4 and so on ...
+- starting at 1 - next number in the iteration is 3 and the next is 5 and so on ...
+
+** pseudocode - example of the same code using a while..loop
+
+...
+2. 	intCount = 1 // starting number - initialized
+3. 	while intCount <= 25 // the condition to know when to stop the processing of the instructions 
+		output "Enter Age: " 
+		input intAge 
+		intSum = intSum + intAge // accumulating 
+		intCount = intCount + 1 // incrementing the counting variable - which is also controlling the loop 
+	endwhile 
+...
+
+** javascript version of the above for..loop program 
+
+	let intAge; 
+	let intCount; 
+	let intSum; 
+	let fltAvg; 
+
+	for (intCount = 1; intCount <= 10; intCount++){
+		intAge = Number(prompt("Enter Age: "));
+		intSum = intSum + intAge 
+	}
+
+	fltAvg = (intSum / 10).toFixed(2); 
+	console.log("The average age is " + fltAvg);
+
+- when the while..loop and do..while loop is processed, we are aware of the instructions that controls the loop and the code that deals with the changes to understand when the loop is repeated and stopped 
+
+- in the for..loop - the processing setup is known - the incrementing and decision making is not shown though it is internally processed - so in theory - when the flow reaches the endfor statement - 2 things happen - the control variable is incremented (or decremented) using the step value - and the variable is checked against the ending value - is the variable greater than the ending value - if so - then the loop will end - and if not - the loop will repeat 
+
+** 
+-- repetition of instructions in loops can be controlled by: 
+--- a counter - when you know how many times to execute the instructions inside the loop 
+--- a sentinel value - when you do not know the number of times to execute the instructions inside the loop 
+--- a flag - when you do not know the number of times to execute the instructions inside the loop - but that a decision will be made based on some processing that internally changes the value of this flag variable
+
+-- we will likely use the while..loop and do..while loop when we do not know how many times to execute the instructions 
+-- we will likely use the for..loop when we know how many times to execute the instructions 
+**
+
+
+Nested loops
+------------
+- nested loops are loop statements inside of another loop statement - offering a variation of coding that expands on the programming logic (the rules and coding learnt earlier does not change - we are just adding more complexity to the processing of loops) 
+
+** 
+the example used in class - let's say we wanted to print out the times table for a number like how we learnt in primary school - as we progress - following what we learnt in class, was starting out with just one times table and then how we end up outputting all twelve times tables similar to the entire set we learnt back in school  
+** 
+
+- for example - the 2 times table 
+- output 
+	2 x 1 = 2 
+	2 x 2 = 4 
+	2 x 3 = 6 
+	2 x 4 ... 
+	... 
+	2 x 12 = 24 
+
+- the output statement for the above would be: 
+?.	output "2 x " + intNum + " = " + (2 * intNum)
+
+- intNum - technically not the right variable name in this case - we could use intCount - since we are going to be counting from 1 to 12 for the 12 lines of output needed for the times table 
+
+----------------------------------------------------------------------
+** pseudocode - using the for..loop 
+
+0. Start 
+1. Declarations 
+	num intCount 
+
+2.	for intCount = 1 to 12 Step 1
+		output "2 x " + intCount + " = " + (2 * intCount)
+	endfor 
+
+3. Stop  
+
+----------------------------------------------------------------------
+** pseudocode - same example - using a while..loop 
+
+0. Start 
+1. Declarations 
+	num intCount 
+
+2. 	intCount = 1 
+
+3.	while intCount <= 12 
+		output "2 x " + intCount + " = " + (2 * intCount)
+		intCount = intCount + 1 
+	endwhile 
+4. Stop  
+
+----------------------------------------------------------------------
+** javascript version - using a for..loop 
+
+let intCount; 
+
+for (intCount = 1; intCount <= 12; intCount++){
+	console.log("2 x " + intCount + " = " + (2 * intCount));
+}
+
+----------------------------------------------------------------------
+- now in the above program - we are executing the program to only print out just one times table - what if we left it up to the user to decide which times tables they wanted to be outputted - a simple input from the user and then use that value to output the right set of 12 lines as required 
+
+0. Start 
+1. Declarations 
+	num intCount 
+	num intNum 
+
+2. 	intCount = 1 
+3.	output "Enter the number for the times table you want: " 
+4.	input intNum 
+
+5.	while intCount <= 12 
+		output intNum " x " + intCount + " = " + (intNum * intCount)
+		intCount = intCount + 1 
+	endwhile 
+4. Stop  
+
+----------------------------------------------------------------------
+- now instead of asking the user - let's remember what we learnt in primary school - 12 sets of times table
+- from 1 x 1 = 1 ... till 12 x 12 = 144 
+
+- based on the above coded solutions - we could code 12 for..loop 's - one for each times table set of 12 lines
+
+** pseudocode 
+
+2.	for intCount = 1 to 12 Step 1
+		output "1 x " + intCount + " = " + (1 * intCount)
+	endfor 
+
+3.	for intCount = 1 to 12 Step 1
+		output "2 x " + intCount + " = " + (2 * intCount)
+	endfor 
+
+4.	for intCount = 1 to 12 Step 1
+		output "3 x " + intCount + " = " + (3 * intCount)
+	endfor 
+
+	...
+
+13.	for intCount = 1 to 12 Step 1
+		output "12 x " + intCount + " = " + (12 * intCount)
+	endfor 
+
+- coding 12 separate for..loop 's is just a little too much - while the processing is what we expect - when I write all these lines of code - I noticed something - all the statements are exactly the same - except for the "times table" number for each set - so could I then use another loop to help with this - yes ... 
+
+----------------------------------------------------------------------
+- using nested for..loops to process 12 sets of times tables 
+
+0. Start 
+1. Declarations 
+	num intCount 
+	num intTimesTableNum
+
+2.	for intTimesTableNum = 1 to 12 Step 1 
+		for intCount = 1 to 12 Step 1 
+			output intTimesTableNum + " x " + intCount + " = " + (intTimesTable * intCount)
+		endfor 
+	endfor 
+
+3, Stop 
+
+----------------------------------------------------------------------
+- same example using 2 sets of while..loops 
+
+0. Start 
+1. Declarations 
+	num intTimesTableNum 
+	num intCount 
+
+2.	intTimesTableNum = 1 
+
+3.	while intTimesTableNum <= 12 
+		intCount = 1 
+		while intCount <= 12
+			output intTimesTableNum + " x " + intCount + " = " + (intTimesTable * intCount)
+			intCount = intCount + 1 
+		endwhile 
+		intTimesTableNum = intTimesTableNum + 1 
+	endwhile 
+
+4. Stop 	
+
+----------------------------------------------------------------------
+** javascript version using nested for..loops 
+
+let intCount, intTimesTableNum; 
+
+for (intTimesTableNum = 1; intTimesTableNum <= 12; intTimesTableNum++){
+	for (intCount = 1; intCount <= 12; intCount++){
+		console.log(intTimesTableNum + " x " + intCount + " = " + (intTimesTableNum * intCount));
+	}
+}
+
+* nested loops never overlap - the inner loop is fully contained inside the outer loop 
+* the inner loop must always complete all iterations each time it is dealt with, while technically the outside loop is only executed (as a whole) just once 
+- please make sure to review the example in the manual - to see and understand a different scenario that required nested loops as well
+
+** this type of coding is also going to help when we learn to program 2-dimensional arrays as well **
+
+The Advantages of Looping 
+-------------------------
+- programming is more efficient - because there is literally less instructions coded (because the loop is dealing with the repetition)
+- less time is required to design and code the complete solution 
+- can lead to fewer errors because we are not coding the same instructions multiple times
+- the time it takes to compile the program would be shorter (through the compiler)
+
+The Logic of a Loop 
+-------------------
+- rules 
+-- provide a starting value for the variable that controls the loop 
+-- test the control variable to determine whether instructions inside the loop are executed 
+-- alter the loop control variable 
+
+- while this code relates to the while..loop and the do..while loop - the for..loop does have its place in the above rules as well
+
+
+Avoiding Common Loop Mistakes
+-----------------------------
+- neglecting to initialize the loop control variable - fail to do this and we may never enter the loop - leading to logical or even run-time errors 
+
+- neglecting to alter the loop control variable - we may initialize the variable as needed to enter the loop - but once inside, if we fail to alter the value - we might get ourselves caught in an infinite loop 
+
+- using the wrong comparison with the condition of the loop - there is a different between while intCount < 5 and while intCount <= 5 - the better we understand this logic (from Chapter 2 and 5) - the better we understand what is coded for the processing of the loop 
+
+- including statements inside the loop that are meant to belong outside the loop - the average age examples - imagine the following statement being inside the loop: fltAvg = intSum / intCount - while there is nothing immediately wrong with this instruction being inside the loop - it makes no sense - you would only know the true values of intSum and intCount only when the loop has ended - Now imagine that not only is the calculation is inside the loop structure but also: 
+	output "The average is " + fltAvg 
+this would mean that each time the loop instructions are repeated that an output is going to be executed - why would we want that - this output should only happen once - and that one time should be when we are done processing the loop - have the true intSum and intCount values to calculate just one fltAvg 
+
+- writing the instructions in the wrong order inside the loop - in the same way that we learnt in Chapter 4 - Sequential Logic - that the code written following the order of instructions is important - the same can be said about loop logic - if we fail to write the instructions in the correct order, we once again, can create run-time and/or logical errors  
+
+Common Loop Applications 
+------------------------
+- to accumulate totals - calculating the total ages of the students in the class - calculating the total sales amount for the number of products being purchased 
+
+- to count the number of items in a set  
+
+- print summary reports - when a loop is executed - we can use the variables that were processed to present further information to the user to help make decisions and understand the data sets that were a part of the storyline - like printing the average age - but also highest and lowest values and possibly other things in the future
+
+- use a loop to validate data - commonly when we request input from the user - we accept that in pseudocode, there are no immediate mistakes and the following input statement is understood to accept the value from the user - but in the future, we will learn that what if the user makes a mistake and the value entered is not acceptable, how do we inform the user of the mistake (use the output) and how do we ask the user to enter the value again (use the loop)
+
+- in a similar statement to the above - we could also limit the number of times we prompt the user for an input - enter the password and you have 3 chances to enter correctly - if after 3 times, it is still incorrect - we block you from entering the remainder of the program
+
+
+===========================================================================
+
+one example that we have spoken about in class was from the homework - giving us an opportunity to discuss the processing of a loop and then to also see how one program's code leads to another answer just by changing a few lines and altering its logic 
+
+- the program was about the factors of a number and then also the program to determine if a number is prime number or not
+
+** pseudocode - to print out the factors of a number - we need to implement a loop - since we know how many times we  execute the loop based on the number to be entered - the for..loop will work nicely for this solution
+
+0. Start 
+1. Declarations 
+	num intNum 
+	num intCount 
+
+2.	output "Enter number " 
+3.	input intNum 
+
+4. 	output "Factors of " + intNum + " is : " 
+
+5.	for intCount = 1 to intNum Step 1 
+		if (intNum MOD intCount) = 0 then 
+			output intCount
+		endif 
+	endfor 
+
+6. Stop 
+
+// intCount is used to control the loop and is also used to see if its a factor of intNum 
+
+------------------------------------------------------------------------------------
+** javascript version 
+
+let intNum, intCount;  
+ 
+intNum = Number(prompt("Enter number ")); 
+
+console.log("Factors of " + intNum + " is : "); 
+
+for (intCount = 1; intCount <= intNum; intCount++) {
+	if ((intNum % intCount) == 0) { 
+		console.log(intCount);
+	} 
+} 
+
+------------------------------------------------------------------------------------
+** pseudocode - use the same program code above to determine if the number entered by the user is a prime number or not - taking note that a prime number only has 2 factors 
+
+0. Start 
+1. Declarations 
+	num intNum 
+	num intCount 
+	num intFactorCount // introduce a new variable to keep count of the number of factors determined 
+
+2.	output "Enter number " 
+3.	input intNum 
+
+4. 	output "Factors of " + intNum + " is : " 
+
+5.	intFactorCount = 0 
+
+6.	for intCount = 1 to intNum Step 1 
+		if (intNum MOD intCount) = 0 then 
+			output intCount
+			intFactorCount = intFactorCount + 1 // increment to keep track of the factors
+		endif 
+	endfor 
+
+7.	if intFactorCount = 2 then // if there are 2 factors - then ... 
+		output "This is a prime number" 
+	else 
+		output "This is not prime number" 
+	endif 
+6. Stop 
+
+
+------------------------------------------------------------------------------------
+** pseudocode - since the above program is still printing out factors - this program removes that instruction - no need to print out the factors, if the program only asked to determine if the number entered is a prime number or not 
+
+0. Start 
+1. Declarations 
+	num intNum 
+	num intCount 
+	num intFactorCount 
+
+2.	output "Enter number " 
+3.	input intNum 
+
+4.	intFactorCount = 0 
+
+5.	for intCount = 1 to intNum Step 1 
+		if (intNum MOD intCount) = 0 then 
+			intFactorCount = intFactorCount + 1 
+		endif 
+	endfor 
+
+6.	if intFactorCount = 2 then 
+		output "This is a prime number" 
+	else 
+		output "This is not prime number" 
+	endif 
+7. Stop 
+
+------------------------------------------------------------------------------------
+** pseudocode - in the above program and through the discussion in class - we noted that there are no factors of a number after the halfway point in the loop that iterates from 1 to the inputted number - so if we know this - could we be a little more efficient with our coding - a little out of the box thinking ...
+
+0. Start 
+1. Declarations 
+	num intNum 
+	num intCount 
+
+2.	output "Enter number " 
+3.	input intNum 
+
+4. 	output "Factors of " + intNum + " is : " 
+
+5.	for intCount = 1 to (intNum \ 2) Step 1 // execute the code to the halfway point - note integer division
+		if (intNum MOD intCount) = 0 then 
+			output intCount
+		endif 
+	endfor 
+
+6.	output intNum 
+7. Stop 
+
+
+- so the loop only goes to the halfway point - but still following the rules of the loop - the ending number must be an integer - so that is why we use integer division - coded in an expression that results in an integer value used for the ending number
+
+------------------------------------------------------------------------------------
+
+** javascript version - since integer division does not formally exist as its own symbol/operator - we are a little creative here - use normal division - then use the Math.floor() function that truncates the decimal value - the floor() function will produce an integer value - and its similar to rounding off a number but is different 
+
+let intNum, intCount;  
+ 
+intNum = Number(prompt("Enter number ")); 
+
+console.log("Factors of " + intNum + " is : "); 
+
+for (intCount = 1; intCount <= (Math.floor(intNum / 2)); intCount++){
+	if ((intNum % intCount) == 0){ 
+		console.log(intCount);
+	} 
+} 
+console.log(intNum);
