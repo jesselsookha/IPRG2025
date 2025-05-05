@@ -47,7 +47,7 @@ Below you'll find the course's content organized by chapters. Each chapter conta
 
 #### Chapter 7: Arrays
 
-- 
+- **ch7 p1.txt** – Chapter 7 - part 1 - examples discussed in class till the common tasks
 
 #### Chapter 8: Methods
 This chapter covers the use of functions to structure programs.
