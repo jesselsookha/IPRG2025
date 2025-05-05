@@ -1,0 +1,849 @@
+Chapter 7 Arrays 
+================
+
+Arrays
+------
+- from chapter 2 to 6 - we have learnt how to manipulate variables - data that is stored in a single variable - when its overwritten - then that is what you wanted to happen - when its assigned a value initially - when its assigned a value through an assignment statement - again, that is what you wanted to code - lessons learnt from these previous chapters has guided us in developing solutions that uses, sequential logic, decision logic and loop logic with all its possible variations - algorithms ... 
+
+- an Array is another - new data structure we are learning - store several values in the same variable
+- effectively decrease processing time because we are now dealing with a list of values
+
+- examples - 
+- a list of ages - the example was used in class ... talking about the ages of the students in class, the average, the highest and lowest 
+- a list of temperatures recorded - mentioned and shown in the code in the notes 
+- a list of students in a class group 
+- a marksheet - - collecting information for a students - names, student numbers, assessment results, etc. 
+
+- being able to store multiple values for a variable allows us to expand of the programming logic we wish to implement
+
+-- Element - each piece within the array is referenced using different names - element & cell are common terms 
+-- Subscript / Reference Number - each cell in the array is reference by a reference number - again, there are multiple terms used to reference each cell/element - index, subscript, element number, reference number, cell number, etc. - these element numbers is always an integer value 
+
+-- Base-Zero System - counting in an array is zero-based - so this means that when an array is declared - the number of cells is stated - but it is important to note that the index for each cell begins at 0 - zero - so 10 cells have indexes from 0 to 9 / 5 cells have indexes from 0 to 4 / and so on ... 
+
+One-Dimensional Arrays 
+----------------------
+	   0     1     2     3     4     5     6     7     8     9
+	┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
+var	│  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │ 10  │ 	
+  	└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
+
+- a one-dimensional array is one variable "broken" into a set number of cells (pieces) - as programmers we visualize an array as a block that is either horizontal or vertical - this helps when a storyline (the question) is attached then the visualized block makes sense when we see it like that - the variable in memory is stored differently! 
+
+- in code - the subscript is stated in square brackets to reference the cell value 
+
+** pseudocode 
+
+4.	intNum[0] = 1 //intNum is the array variable - [0] is the index/cell number - assigned the value of 1 
+
+- the index value is always of an integer data type 
+- it is possible - in future (note: the bubble sort code) that we could write a mathematical expression within the square brackets - and it is important to note that the expression must always evaluate to an integer value to used as an index for the array 
+
+5.	intCount = 9 
+6.	output intNum[intCount] // outputting the 10 value from the array - using a variable for the index 
+
+- most of the time - in our programming code - we are going to come across the idea that a variable is going to be used to reference the element of the array - so in addition to the above code - a loop would be used to control intCount and then it will be used to reference each cell in the array 
+
+0. Start 
+1. Declarations 
+	num fltDiscount[7] = 10, 15, 10, 15, 10, 15, 10 // 7 days worth of discounts offered in a store 
+
+	num intSUNDAY = 0 	// series of CONSTANT variables declared 
+	num intMONDAY = 1
+	num intTUESDAY = 2
+	num intWEDNESDAY = 3
+	num intTHURSDAY = 4
+	num intFRIDAY = 5
+	num intSATURDAY = 6
+		
+
+- in the above code - we have a one-dimensional array that contains the discount percentage offered on different days in the week - now if we wanted to reference a specific day's discount percentage to be used in a calculation, we would do the following 
+
+2.	fltNewPrice = fltPrice - ((fltDiscount[5] / 100) * fltPrice) // cell 5 is in reference to Friday 
+
+- while in the above code - it is meant to work as expected - reading the code might seem a little confusing - for example - knowing that Sunday is the 1st day of the week - Friday is the 6th day of the week - but when we see the code fltDiscount[5] - its not immediately known that this is Friday's discount - but you could say - being programmers - that we know that the first cell of the array, with an index of 0 is known to be Sunday and the sixth cell of the array with an index of 5 is Friday - so where is the confusion? - no confusion really ... but now if we introduced a set of constant variables - assigning 0 to 6 for the 7 days - the following code does make a little more sense ... 
+
+2.	fltNewPrice = fltPrice - ((fltDiscount[intFRIDAY] / 100) * fltPrice) // intFRIDAY contains the value of 5 
+
+- again - not always needed - but does help to better read the code an understand what we are doing 
+
+7.	strName[intIndex + 1]	// use of a mathematical expression inside the square brackets - for the index 
+
+- the expression will help in the future when we need to reference cells and their immediate neighbours - there are other possible uses of this that will be explored in future examples 
+
+-------------------------------
+** parallel arrays explanation
+-------------------------------
+- two or more one-dimensional arrays in which the values referenced by the same element numbers are related to each other - the storylines that are used, the possible images shared, helps to understand the information presented and the programming logic that needs to be implemented
+
+**
+PLEASE NOTE THAT EXAMPLES OF ARRAY REPRESENTATIONS AS IMAGES AND CODE HAS BEEN SHARED HERE ALREADY EVEN THOUGH THE TRUE START OT CODING ARRAY IS SHARED AFTER - SO IT IS IMPORTANT TO READ THROUGH THIS CODE AND DO YOUR BEST TO UNDERSTAND HOW THINGS ARE GOING TO EVOLVE - THE KNOWLEDGE IS NEEDED FOR THE ASSIGNMENT, THE EXAM AND FUTURE EXAMPLES EXPLORED IN CLASS
+
+EXAMPLE - CITIES WITH RECORDED HIGH AND LOW TEMPERATURES IN 3 1d ARRAYS 
+EXAMPLE - 2 PARALLEL 1d ARRAYS CONTAINING THE PRODUCT ID NUMBERS WITH THE RELATED PRICES 
+EXAMPLE - A RECORD OF CITIES WITH JUST 1 TEMPERATURE IN 2 PARALLEL 1d ARRAYS 
+
+AGAIN - GO THROUGH THIS CODE TO AID IN HELPING YOU SEE THAT AS YOU PROGRESS WITH THE NOTES/CODING FOR THE CHAPTER, THE STORYLINE WILL EVOLVE AND WILL LEAD TO THE DEVELOPMENT OF A SOLUTION THAT USES PARALLEL 1d ARRAYS TO EVALUATE DATA
+**
+--------------------------------------
+** end of parallel arrays explanation
+--------------------------------------
+
+- you have seen examples of this already in the code above - declaring of arrays is actually simple and easy to understand 
+
+** pseudocode 
+
+0. Start 
+1. Declarations 
+	num intNum[5] 	// declared an array variable named intNum - static array of size 5 - 5 cells 
+
+	// a series of assignment statements - assigning the values into the respective cells - manually 
+2.	intNum[0] = 1 
+3.	intNum[1] = 2 
+4.	intNum[2] = 3 
+5.	intNum[3] = 4 
+6.	intNum[4] = 5 
+
+** another example 
+
+0. Start 
+1. Declarations 
+	string strName[5] = "John", "Jack", "Jane", "Jennifer", "Jessica" 
+	// creating the array variable and assigning the value at declaration 
+	// each value is assigned to the respective element in the array 
+
+- creating an array and assigning values at declaration or during the processing of the program is the choice of the programmer - we might have been provided the data - or we might be required to prompt the user of the program for the data - so the choice of coding is dependent on the storyline/question we are presented with
+
+Using a for..loop to process arrays 
+-----------------------------------
+- because the array we are creating is a static one-dimesional array - we know the size of the array - we know the number of elements in the array - a for..loop is better suited to deal with "talking" to the elements in the array. 
+
+** pseudocode 
+
+0. Start 
+1. Declarations 
+	num intNum[10] = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+	num intCount
+
+2.	for intCount = 0 to 9 Step 1 
+		output "Cell [" + intCount + "] = " + intNum[intCount] 
+	endfor 
+
+3. Stop 
+
+- in the above example - the variable intCount has a dual purpose - 1st it is the controlling variable for the for..loop - and since it is iterating from 0 to 9 (10 iterations) - it is then also used (2nd) as the index for the referencing of the array element 
+
+- please also note that using a while..loop and the do..while loop is also possible - but when coding these loops, we are reminded that we need to take control of the controlling variable, the initializing, the incrementing, and the condition for the loop ... remember that in the while..loop and the do..while loop - its going to be controlled by the counting variable ... 
+
+
+Input Data into a 1D array 
+--------------------------
+- loading the array at declaration is likely when we know the values that we are dealing with - many times though, we are required to prompt the user for the data 
+
+** pseudocode 
+0. Start 
+1. Declarations 
+	num intNum[10] 
+	num intIndex 
+
+2.	output "Prompting the user for the numbers" 
+
+3.	for intIndex = 0 to 9 Step 1 
+		output "Enter number: " 
+		input intNum[intIndex] 
+	endfor 
+
+4. Stop 
+
+// in the above program - the user is required to enter in 10 numbers - they would see the prompt "Enter number: " and thereafter, enter the number - they are going to see this prompt 10 times - loop iterating from 0 to 9 - while this is perfectly fine - we could be a little more user-friendly ... 
+
+** pseudocode - another example 
+0. Start 
+1. Declarations 
+	num intAge[10] 
+	num intCount 
+
+2.	for intCount = 0 to 9 Step 1 
+		output "Enter age [" + (intCount + 1) + " ] : "		// Enter age [1] : ____ 
+		input intAge[intCount] 
+	endfor 
+
+3. ... 
+
+// in the above code - note the output statement inside the loop - instead of just stating the phrase "Enter age" - we concatenated a value (through the use of the expression intCount + 1) to the phrase - 
+
+	// to the user - note each of the variations and their differences
+
+	output "Enter age: " 				// Enter age: 
+	output "Enter age  " + intCount + ": "		// Enter age 0: 
+	... and ... 
+	output "Enter age [" + (intCount + 1) + "] : " 	// Enter age [1] : 
+
+- in the 2nd example statement - we used intCount as part of the prompt - however because intCount is counting from 0 to 9 and not 1 to 10 - the first prompt is going to show 0 and the second prompt is going to show 1 - that is going to be confusing to the user (not to us programmers - because we know we are counting from 0 to 9) - so the 3rd output statement is a little more user friendly - internally - we are using 0 to 9 through the access of intCount with the loop. but to the user - it looks as if we are asking for the ages of people counting from 1 to 10 through the added mathematical expression
+
+** javascript 
+// same example as above 
+for (intCount = 0; intCount <= 9; intCount++) {
+	intNum[intCount] = Number(prompt("Enter number for cell [" + intCount + "]: ");
+}
+
+for (intCount = 0; intCount <= 9; intCount++) {
+	intAge[intCount] = Number(prompt("Enter age [" + (intCount + 1) + "]: ");
+}
+
+
+** pseudocode - using the while..loop 
+
+// remember the notes from the previous chapter - we usually use the while..loop when we do not know how many time to execute the loop - through the 
+// understanding of the loop being controlled by a sentinel value - but there was notes shared about controlling the loop with a counter - and with 
+// this counter, we can make the while..loop iterate a set number of times - it is our responsibility to initialize this counter, controlling 
+// variable, know and deal with the condition to control the loop and to change (increment) the controlling variable's value in order for the loop 
+// to execute as expected
+
+0. Start 
+1. Declarations 
+	num intNumbers[10]
+	num intElementNumber 
+
+2.	intElementNumber = 0 // initialize the counting variable - also the index 
+
+3.	while intElementNumber <= 9 // condition to know when to exit 
+		output "Enter value: " 
+		input intNumbers[intElementNumber] 
+		intElementNumber = intElementNumber + 1 // increment the counting variable
+	endwhile 
+
+4.	...
+
+
+Printing Data from a 1D array
+-----------------------------
+- outputting the data from an array is going to become common practice to present the information you have saved and offer some extra information in the processing of a solution 
+
+** pseudocode 
+// take note of the example above about the ages of "students" storyline ... 
+
+5. 	output "STUDENT AGES" 	// output a heading 
+ 
+6.	for intCount = 0 to 9 Step 1 
+		output "Age [" + (intCount + 1) + "] = " + intAge[intCount]		// Age [5] = 23 
+	endfor 
+
+** javascript 
+
+for (intCount = 0; intCount <= 9; intCount++) {
+	console.log("Age [" + intCount + "] = " + intAge[intCount]);
+}
+
+Common Tasks Executed using Arrays
+----------------------------------
+- to accumulate, count, calculate an average, determine the highest and lowest values, are just some of the common tasks that we use to teach you about processing values in arrays - the code shared below is a variety of variations we have discussed in class 
+
+**
+NOTE: remember that much of the coding is done separately - simply because we know that the values in the array exist for the duration of the program being processed - so it is not important to force onto a programmer to process all the work in one (or two) loop/s - when the code is separated - we have a better understanding of what we are capable of and when we choose to execute the code .. 
+
+** ALSO - this is going to lead into the next chapter - when we learn about functions and procedures - we have the opportunity to split the program 
+** into different blocks and execute them as and when we choose to  
+**
+
+--------------------------------------------------------------------------------------------------
+** pseudocode and javascript code shared - please do take note of the comments and extra notes 
+--------------------------------------------------------------------------------------------------
+
+0. Start 
+1. Declarations 
+	num intAge[10]	// size is 10 = 10 elements in the array 		
+	num intCount 	// counting variable + to be used as the index number for the array 
+	num intSum 	// to accumulate the ages 
+	num fltAvg	// assign the average age 
+
+2.	for intCount = 0 to 9 Step 1 
+		output "Enter age "
+		input intAge[intCount] 	// inputting the ages into the various cells of the array 
+	endfor 
+
+3.	intSum = 0 // initialize the accumulating variable 
+
+4.	for intCount = 0 to 9 Step 1 
+		intSum = intSum + intAge[intCount] // ages are accumulated 
+	endfor 
+
+5.	fltAvg = intSum / 10 	// average calculated
+6.	output "The average age of the 10 people is " + fltAvg 
+
+7. Stop 
+
+--------------------------------------------------------------------------------------------------
+** javascript version 
+--------------------------------------------------------------------------------------------------
+
+let intAge = [10]; 
+let intSum; 
+let fltAvg; 
+let intCount; 
+
+for (intCount = 0; intCount <= 9; intCount++) {
+	intAge[intCount] = Number(prompt(intCount + ": Enter age : "));
+}
+	
+intSum = 0; 
+for (intCount = 0; intCount <= 9; intCount++) {
+	intSum = intSum + intAge[intCount]; 
+}
+
+fltAvg = intSum / 10; 
+
+console.log("The average age is " + fltAvg.toFixed(2));
+
+console.log("This is the contents of the array");
+for (intCount = 0; intCount <= 9; intCount++) {
+	console.log("Age [" + (intCount + 1) + "] : " + intAge[intCount]);
+}
+
+--------------------------------------------------------------------------------------------------
+** the following example uses a CONSTANT variable to manage the number of people & in turn the 
+number of elements in the array - also using a while..loop to process the sum and the average 
+--------------------------------------------------------------------------------------------------
+
+0. Start 
+1. Declarations 
+	num intAge[10] = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 // assigned ages at declaration 
+	num intNUMPPL = 10 // number of people in the list - in the array 
+	num intSum 
+	num intCount 
+	num fltAvg 
+
+2.	intCount = 0 
+3.	while intCount < intNUMPPL 
+		intSum = intSum + intAge[intCount] 
+		intCount = intCount + 1 
+	endwhile 
+
+4.	fltAvg = intSum / intNUMPPL
+5.	output "The average age is " + fltAvg 
+
+6. Stop
+
+--------------------------------------------------------------------------------------------------
+** the following example uses the for..loop - the slight difference in the code is noting the 
+(intNUMPPL - 1) piece of code - we know that there are 10 people - but the loop needs to iterate 
+from 0 to 9 - so 0 to (10 - 1) is what we are doing  
+--------------------------------------------------------------------------------------------------
+
+0. Start 
+1. Declarations 
+	num intAge[10] = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+	num intNUMPPL = 10
+	num intSum = 0 
+	num intCount 
+	num fltAvg 
+
+2.	for intCount = 0 to (intNUMPPL - 1) Step 1  
+		intSum = intSum + intAge[intCount] 
+	endfor 
+
+4.	fltAvg = intSum / intNUMPPL
+5.	output "The average age is " + fltAvg 
+
+6. Stop
+
+--------------------------------------------------------------------------------------------------
+** same example but now using the while..loop instead of the for..loop - note the condition used 
+intStudent is the counting variable - the condition while 0 < 10 ... till 9 < 10  ... 
+--------------------------------------------------------------------------------------------------
+	
+0. Start 
+1. Declarations 
+	num intAge[10] = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+	num intNUMPPL = 10
+	num intSum 
+	num intStudent 
+	num fltAvg 
+
+2.	intStudent = 0 
+3.	while intStudent < intNUMPPL 
+		intSum = intSum + intAge[intStudent] 
+		intCount = intCount + 1 
+	endwhile 
+
+4.	fltAvg = intSum / intNUMPPL
+5.	output "The average age is " + fltAvg 
+
+6. Stop
+
+--------------------------------------------------------------------------------------------------
+** we revisited the code in another lecture ... but this time included the code to determine the
+highest and lowest values that are in the array 
+--------------------------------------------------------------------------------------------------
+
+// incomplete program  
+
+0. Start 
+1. Declarations 
+	num intNum[10] = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+	num intSum, intCount 
+	num fltAvg 
+	num intHigh, intLow 
+
+2.	intSum = 0 
+
+3.	for intCount = 0 to 9 Step 1 
+		intSum = intSum + intNum[intCount] 
+	endfor 
+
+4.	fltAvg = intSum / 10 			// fltAvg = intSum / intCount 
+5.	output "The average is " + fltAvg 
+	...
+
+// take note of the fltAvg assignment statement - / 10 and / intCount 
+// we are coding and using 10 because we simply know that number of elements in the array 
+// but because of the logic if the for..loop - the loop ends when the control variable is 
+// larger than the ending number - so the is iterating from 0 to 9 - the loop ends when 
+// intCount is greater than 9 - which means that when Step 1 - the increment is executed 
+// internally - intCount will each 10, which is greater than 9 and the loop will be exited
+// - so its perfectly fine to then say that we can divide by intCount in this example 
+// instead of hardcoding the value of 10 
+
+--------------------------------------------------------------------------------------------------
+** the complete program with the determination of high and low values from the set of array values 
+--------------------------------------------------------------------------------------------------
+
+0. Start 
+1. Declarations 
+	num intSIZE = 10 // constant 
+	num intNum[10] = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+	num intSum, intCount 
+	num fltAvg 
+	num intHigh, intLow 
+
+2.	intSum = 0 
+
+3.	for intCount = 0 to (intSIZE - 1) Step 1 
+		intSum = intSum + intNum[intCount] 
+	endfor 
+
+4.	fltAvg = intSum / intSIZE
+5.	output "The average is " + fltAvg 
+
+	// high and low is initialized to values that do not exist in the range of values being 
+	// spoken about 
+
+6.	intHigh = -1  // initialized values to begin with
+7.	intLow = 999
+
+8. 	for intCount = 0 to 9 Step 1 
+		if intNum[intCount] > intHigh then // if the value in the array is larger than high 
+			intHigh = intNum[intCount] // high is reassigned to the value in the array 
+		endif 
+		if intNum[intCount] < intLow then // if the value in the array is lower than low
+			intLow = intNum[intCount] // low is reassignmed to the value in the array 
+		endif 
+	endfor 
+
+	// by the end of the execution of the loop - we would have iterated through all the values 
+	// in the array and reassigned high and low whenever those if..then statements were true 
+	
+9. 	output "The highest number is " + intHigh 
+10.	output "The lowest number is " + intLow 
+
+11. Stop 
+
+// important to remember the idea around the initialization of high and low 
+// if the story is different - then these values are different -
+// temperature 	- high = -999 	low = 999 
+// marks 	- high = -1	low = 101
+// sales amount	- high = -1	low = 32767 	// low ? something we need to talk about 
+
+--------------------------------------------------------------------------------------------------
+** the same program - but instead of the only just determining what is the highest and lowest 
+values in the array - we are also going to state in which cell we found the highest and lowest 
+values 
+--------------------------------------------------------------------------------------------------
+0. Start 
+1. Declarations 
+	num intSIZE = 10 // constant 
+	num intNum[10] = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+	num intSum, intCount 
+	num fltAvg 
+	num intHigh, intLow, intHighIndex, intLowIndex  
+
+2.	intSum = 0 
+
+3.	for intCount = 0 to (intSIZE - 1) Step 1 
+		intSum = intSum + intNum[intCount] 
+	endfor 
+
+4.	fltAvg = intSum / intSIZE
+5.	output "The average is " + fltAvg 
+
+6.	intHigh = -1	  
+7.	intLow = 999
+8.	intHighIndex = -1 // initialize the index values 
+9. 	intLowIndex = -1 
+
+10. 	for intCount = 0 to 9 Step 1 
+		if intNum[intCount] > intHigh then 
+			intHigh = intNum[intCount] 
+			intHighIndex = intCount // we reassign the high index to the current intCount - index value
+		endif 
+		if intNum[intCount] < intLow then 
+			intLow = intNum[intCount] 
+			intLowIndex = intCount // we reassign the low index to the current intCount
+		endif 
+	endfor 
+
+9. 	output "The highest number is " + intHigh + " found in cell " + intHighIndex
+10.	output "The lowest number is " + intLow + " found in cell " + intLowIndex
+
+11. Stop 
+
+// knowing where we find the highest and lowest values is going to help greatly when we look at 
+// multiple parallel 1d arrays - because when we for example, find the highest mark for test 1 
+// we can then use the intHighIndex variable to retrieve the associated student's name from 
+// the other array to inform the user, who got the highest mark
+
+--------------------------------------------------------------------------------------------------
+** the code below was discussed in class with the following statement - what if we do not know 
+what to initialize high and low to ... remember the example about sales figures - we could do our 
+hoemwork/research about a storyline - looking through the past few years worth of data and then 
+determining what high and low should be initialized to - but its possible that we might not be able 
+to still determine this - technically in the storyline of sales - high could be -1 - but low ? what 
+can that be ? 
+
+** so instead of assigning high and low to those odd numbers from the our research - we assign 
+high and low to the first cell in the array - cell [0] - whatever that value is - is then set to 
+be the current highest and lowest - the indexes are also initialized to cell [0] - this is before 
+the loop begins - then notice the loop - instead of executing it from 0 to 9 - we chose to only
+execute from 1 to 9 (9 times) because we set the first value to be the highest and lowest ... 
+--------------------------------------------------------------------------------------------------
+6.	intHigh = intNum[0]  	// first cell 
+7.	intLow = intNum[0]	// first cell 
+8.	intHighIndex = 0 	// index 0 - first cell 
+9. 	intLowIndex = 0 	// index 0 - first cell 
+
+10. 	for intCount = 1 to 9 Step 1 
+		if intNum[intCount] > intHigh then 	// same code as before 
+			intHigh = intNum[intCount] 
+			intHighIndex = intCount 
+		endif 
+		if intNum[intCount] < intLow then 
+			intLow = intNum[intCount] 
+			intLowIndex = intCount 
+		endif 
+	endfor 
+
+--------------------------------------------------------------------------------------------------
+** the code below - what if there was more than one value that is the highest - note the output 
+statement - its inside the if..then - inside the loop to output each time it thinks it found the 
+highest value 
+--------------------------------------------------------------------------------------------------
+
+0. Start 
+1. Declarations 
+	num intNum[10] = 1, 2, 3, 1, 5, 6, 9, 8, 9, 9
+	num intCount 
+	num intHigh 
+	
+2.	intHigh = -1 
+
+3.	for intCount = 0 to 9 Step 1 
+		if intNum[intCount] > intHigh then 
+			intHigh = intNum[intCount] 
+			output "The highest number is in cell " + intCount 
+		endif 
+	endfor 
+4. Stop 
+
+**
+// but this code is not perfect - it works - but technically this is not the complete right thing 
+// to do - what we should have actually done - is first look for the highest value in the array -
+// then look through the array again - and locate the highest value - like a search ...
+**
+--------------------------------------------------------------------------------------------------
+** javascript version of the code above 
+--------------------------------------------------------------------------------------------------
+
+let intNum = [1,2,3,1,5,6,9,8,9,9]; 
+let intCount, intHigh; 
+
+intHigh = -1; 
+
+for (intCount = 0; intCount <= 9; intCount++){
+	if (intNum[intCount] > intHigh){
+		intHigh = intNum[intCount]; 
+		console.log("[" + intCount + "] = " + intNum[intCount] );
+		console.log ("The highest number is in cell " + intCount + "\n");
+	}
+}
+
+--------------------------------------------------------------------------------------------------
+** pseudocode - take note of the code below - the correction 
+first find the highest value ... then 
+run a new loop - and locate where did you find the highest value 
+--------------------------------------------------------------------------------------------------
+0. Start 
+1. Declarations 
+	num intNum[10] = 1, 2, 3, 1, 5, 6, 9, 8, 9, 9
+	num intCount 
+	num intHigh
+	
+2.	intHigh = -1 
+3.	for intCount = 0 to 9 Step 1 
+		if intNum[intCount] > intHigh then 
+			intHigh = intNum[intCount] 
+		endif 
+	endfor
+
+4.	for intCount = 0 to 9 Step 1 
+		if intNum[intCount] = intHigh then // check if the value in the array is the highest that you found 
+			output "The highest number is in cell " + intCount  	
+ 		endif 
+	endfor 
+5. Stop 
+
+--------------------------------------------------------------------------------------------------
+** javascript version of the code above 
+--------------------------------------------------------------------------------------------------
+
+let intNum = [1,2,3,1,5,6,9,8,9,9]; 
+let intCount, intHigh; 
+
+intHigh = -1; 
+
+for (intCount = 0; intCount <= 9; intCount++){
+	if (intNum[intCount] > intHigh){
+		intHigh = intNum[intCount]; 
+	}
+}
+
+for (intCount = 0; intCount <= 9; intCount++){
+	if (intNum[intCount] == intHigh){ 
+		console.log ("The highest number is in cell " + intCount);
+	}
+}
+
+--------------------------------------------------------------------------------------------------
+Page 193 - the example that was discussed in class - 2 parallel 1d arays that contains the sales 
+for 15 stores and then the percentage of the total sales for each store is stored parallel to the 
+one array 
+--------------------------------------------------------------------------------------------------
+0. Start 
+1. Declarations 
+	num fltSales[15] 
+	num fltPercent[15] 
+	num intIndex 
+	num fltTotalSales 
+
+2.	for intIndex = 0 to 14 Step 1 
+		output "Enter the sales for store [" + (intIndex + 1) + "] : " // Enter the sales for store [1] : 
+		input fltSales[intIndex]	
+	endfor 
+
+3.	fltTotalSales = 0 
+4.	for intIndex = 0 to 14 Step 1 
+		fltTotalSales = fltTotalSales + fltSales[intIndex] 
+	endfor 
+
+5.	for intIndex = 0 to 14 Step 1 
+		// percent = (store sales /  total) * 100		
+		fltPercent[intIndex] = (fltSales[intIndex] / fltTotalSales) * 100
+	endfor 
+
+6. 	for intIndex = 0 to 14 Step 1 
+		output "Store [" + (intIndex + 1) + "] = R" + fltSales[intIndex] + " percent sales is " + fltPercent[intIndex] + "%."
+	endfor 
+7. Stop   
+
+--------------------------------------------------------------------------------------------------------------------------------------
+// adding high and low to the code below 
+--------------------------------------------------------------------------------------------------------------------------------------
+0. Start 
+1. Declarations 
+	num fltSales[15] 
+	num fltPercent[15] 
+	num intIndex 
+	num fltTotalSales 
+	num fltHighPerc, fltLowPerc
+	num intHIndex, intLIndex
+ 
+2.	for intIndex = 0 to 14 Step 1 
+		output "Enter the sales for store [" + (intIndex + 1) + "] : " // Enter the sales for store [1] : 
+		input fltSales[intIndex]	
+	endfor 
+
+3.	fltTotalSales = 0 
+4.	for intIndex = 0 to 14 Step 1 
+		fltTotalSales = fltTotalSales + fltSales[intIndex] 
+	endfor 
+
+5.	for intIndex = 0 to 14 Step 1 
+		// percent = (store sales /  total) * 100		
+		fltPercent[intIndex] = (fltSales[intIndex] / fltTotalSales) * 100
+	endfor 
+
+6. 	for intIndex = 0 to 14 Step 1 
+		output "Store [" + (intIndex + 1) + "] = R" + fltSales[intIndex] + " percent sales is " + fltPercent[intIndex] + "%."
+	endfor
+ 
+7.	fltHighPerc = fltPercent[0] 
+8.	fltLowPerc = fltPercent[0] 
+9.	intHIndex = -1 
+10. 	intLIndex = -1 
+
+11. 	for intIndex = 1 to 14 Step 1 
+		if  fltPercent[intIndex] > fltHighPerc then 
+			fltHighPerc = fltPercent[intIndex] 
+			intHIndex = intIndex
+		endif 
+		if  fltPercent[intIndex] < fltLowPerc then 
+			fltLowPerc = fltPercent[intIndex] 
+			intLIndex = intIndex
+		endif 
+	endfor
+
+12.  	output "The store with the highest percentage sales is Store #" + (intHIndex + 1) + 
+		" with R" + fltSales[intHIndex] + " in sales with a percentage of " + fltHighPerc + "%" 
+
+13.  	output "The store with the lowest percentage sales is Store #" + (intLIndex + 1) + 
+		" with R" + fltSales[intLIndex] + " in sales with a percentage of " + fltLowPerc + "%" 
+
+7. Stop   
+
+--------------------------------------------------------------------------------------------------------------------------------------
+// similar to the storyline shared on Page 179 
+--------------------------------------------------------------------------------------------------------------------------------------
+0. Start 
+1. Declarations 
+	string strCity[5] = "Durban", "Joburg", "Cape Town", "Upington", "Kimberley" 
+	num intTemp[5]
+	num intSum
+	num fltAvgTemp
+	num intIndex 
+
+2.	intSum = 0 
+	
+3.	for intIndex = 0 to 4 Step 1 
+		output "Please enter the temperature for " + strCity[intIndex] + " : " 
+		input intTemp[intIndex] 
+		intSum = intSum + intTemp[intIndex] 
+	endfor 
+
+4.	fltAvgTemp = intSum / 5 
+5. 	output "The average recorded temperature is " + fltAvgTemp 
+6. Stop 
+
+--------------------------------------------------------------------------------------------------
+** javascript version 
+--------------------------------------------------------------------------------------------------
+let strCity = ["Durban", "Joburg", "Cape Town", "Upington", "Kimberley"] ;
+let intTemp = [5];
+let intSum;
+let fltAvgTemp;
+let intIndex 
+
+intSum = 0 
+	
+for (intIndex = 0; intIndex <= 4; intIndex++){ 
+	intTemp[intIndex] = Number(prompt("Please enter the temperature for " + strCity[intIndex] + " : ")); 
+	intSum = intSum + intTemp[intIndex]; 
+} 
+
+fltAvgTemp = intSum / 5; 
+console.log("The average recorded temperature is " + fltAvgTemp); 
+
+--------------------------------------------------------------------------------------------------
+** javascript - alternate version - displaying the sum value at different points in time 
+--------------------------------------------------------------------------------------------------
+
+let strCity = ["Durban", "Joburg", "Cape Town", "Upington", "Kimberley"] ;
+let intTemp = [5];
+let intSum;
+let fltAvgTemp;
+let intIndex 
+
+intSum = 0; 
+console.log("The sum is " + intSum); 
+	
+for (intIndex = 0; intIndex <= 4; intIndex++){
+    console.log("The current index is " + intIndex);
+	intTemp[intIndex] = Number(prompt("Please enter the temperature for " + strCity[intIndex] + " : ")); 
+	intSum = intSum + intTemp[intIndex];
+	console.log("The sum is " + intSum);
+} 
+
+fltAvgTemp = intSum / 5; 
+console.log("The average recorded temperature is " + fltAvgTemp); 
+
+--------------------------------------------------------------------------------------------------
+** pseudocode - adding high to the code below 
+--------------------------------------------------------------------------------------------------
+
+0. Start 
+1. Declarations 
+	string strCity[5] = "Durban", "Joburg", "Cape Town", "Upington", "Kimberley" 
+	num intTemp[5]
+	num intSum
+	num fltAvgTemp
+	num intIndex 
+	num intHighTemp, intHighIndex 
+
+2.	intSum = 0 
+	
+3.	for intIndex = 0 to 4 Step 1 
+		output "Please enter the temperature for " + strCity[intIndex] + " : " 
+		input intTemp[intIndex] 
+		intSum = intSum + intTemp[intIndex] 
+	endfor 
+
+4.	fltAvgTemp = intSum / 5 
+5. 	output "The average recorded temperature is " + fltAvgTemp 
+
+6. 	intHighTemp = -999
+7. 	intHighIndex = -1 
+
+8.	for intIndex = 0 to 4 Step 1 
+		if intTemp[intIndex] > intHighTemp then 
+			intHighTemp = intTemp[intIndex] 
+			intHighIndex = intIndex 
+		endif 
+	endfor 
+
+9.	output "The highest recorded temperature is " + intHighTemp + " in " + strCity[intHighIndex] 
+ 
+10. Stop 
+
+--------------------------------------------------------------------------------------------------
+** javascript version of the code 
+--------------------------------------------------------------------------------------------------
+
+let strCity = ["Durban", "Joburg", "Cape Town", "Upington", "Kimberley"] ;
+let intTemp = [5];
+let intSum;
+let fltAvgTemp;
+let intIndex, intHigh, intHIndex;  
+
+intSum = 0; 
+console.log("The sum is " + intSum); 
+	
+for (intIndex = 0; intIndex <= 4; intIndex++){
+    console.log("The current index is " + intIndex);
+	intTemp[intIndex] = Number(prompt("Please enter the temperature for " + strCity[intIndex] + " : ")); 
+	intSum = intSum + intTemp[intIndex];
+	console.log("The sum is " + intSum);
+} 
+
+fltAvgTemp = intSum / 5; 
+console.log("The average recorded temperature is " + fltAvgTemp); 
+
+intHigh = -999; 
+intHIndex = -1; 
+
+for (intIndex = 0; intIndex <= 4; intIndex++){
+    if (intTemp[intIndex] > intHigh){
+        intHigh = intTemp[intIndex];
+        intHIndex = intIndex; 
+        
+    }
+}
+
+console.log("HTemp is " + intHigh + " in " + strCity[intHIndex]); 
